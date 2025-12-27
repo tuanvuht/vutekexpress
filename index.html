@@ -3,175 +3,609 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VUTEK EXPRESS - Chuyển phát nhanh</title>
+    <title>VUTEK EXPRESS - Chuyển Phát Nhanh Toàn Quốc & Quốc Tế</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS tùy chỉnh của bạn */
-        body { font-family: 'Arial', sans-serif; }
+        /* ====== CUSTOM STYLES ====== */
+        :root {
+            --primary-color: #e30613; /* Màu đỏ như THT Express */
+            --secondary-color: #333333;
+            --light-gray: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header & Navigation */
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 8px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1600x600/007bff/ffffff?text=VUTEK+EXPRESS+BANNER');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 120px 0;
+            padding: 150px 0 100px;
+            margin-top: 76px; /* Tránh bị navbar che */
         }
-        .feature-icon { font-size: 2.5rem; color: #007bff; }
-        .testimonial-card { border-left: 5px solid #007bff; }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .tracking-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Services */
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            border-left: 4px solid var(--primary-color);
+            background: var(--light-gray);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .client-name {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* Stats Counter */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #b3000d 100%);
+            color: white;
+            padding: 70px 0;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ddd;
+        }
+        
+        .footer-link {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: #ddd;
+        }
+        
+        .social-icon:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                padding: 100px 0 60px;
+                margin-top: 66px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- ======= Header ======= -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <!-- ====== HEADER & NAVIGATION ====== -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
+            <a class="navbar-brand" href="#">
                 <i class="fas fa-shipping-fast me-2"></i>VUTEK EXPRESS
             </a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Trang Chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Dịch Vụ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Bảng Giá</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Tra Cứu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Liên Hệ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#home">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Dịch vụ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Bảng giá</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tracking">Tra cứu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Về chúng tôi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Liên hệ</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-danger" href="tel:0123456789">
+                            <i class="fas fa-phone-alt me-1"></i> 0123.456.789
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- ======= Hero Section ======= -->
-    <section class="hero-section text-center mt-5">
+    <!-- ====== HERO SECTION ====== -->
+    <section class="hero-section" id="home">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-4">Chuyển Phát Nhanh Toàn Quốc & Quốc Tế</h1>
-            <p class="lead mb-4">Đồng hành cùng doanh nghiệp, phục vụ tận tâm mọi khách hàng</p>
-            <a href="#" class="btn btn-primary btn-lg me-2"><i class="fas fa-search-location me-1"></i> Tra Cứu Vận Đơn</a>
-            <a href="#" class="btn btn-outline-light btn-lg"><i class="fas fa-phone-alt me-1"></i> Liên Hệ Ngay</a>
-        </div>
-    </section>
-
-    <!-- ======= Dịch Vụ ======= -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Dịch Vụ Chính</h2>
-                <p class="text-muted">Chúng tôi cung cấp giải pháp vận chuyển toàn diện</p>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-4 mb-4">
-                    <i class="fas fa-truck feature-icon"></i>
-                    <h4>Nội Thành</h4>
-                    <p>Chuyển phát siêu tốc trong vòng 2-4 giờ.</p>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Chuyển Phát Nhanh Uy Tín - Toàn Quốc & Quốc Tế</h1>
+                    <p class="lead mb-4">Vận chuyển nhanh chóng, an toàn, chi phí tối ưu. Đồng hành cùng sự phát triển của doanh nghiệp bạn.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#tracking" class="btn btn-primary btn-lg">
+                            <i class="fas fa-search-location me-2"></i>Tra Cứu Vận Đơn
+                        </a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calendar-alt me-2"></i>Đặt Dịch Vụ Ngay
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <i class="fas fa-map-marked-alt feature-icon"></i>
-                    <h4>Liên Tỉnh</h4>
-                    <p>Vận chuyển giữa các tỉnh thành nhanh chóng.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <i class="fas fa-globe-asia feature-icon"></i>
-                    <h4>Quốc Tế</h4>
-                    <p>Gửi hàng đi các nước với thời gian đảm bảo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= Phản Hồi Khách Hàng (Module Quan Trọng) ======= -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="fw-bold mb-3">Khách Hàng Yêu Mến Nói Gì Về Chúng Tôi</h2>
-                    <p class="text-muted">Những phản hồi chân thực là động lực để chúng tôi phục vụ tốt hơn mỗi ngày.</p>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <!-- Item 1 -->
-                            <div class="carousel-item active">
-                                <div class="card border-0 shadow-sm p-4 p-lg-5 testimonial-card">
-                                    <div class="card-body text-center">
-                                        <p class="card-text fst-italic lead mb-4">"Tôi biết VUTEK EXPRESS qua người quen. Dịch vụ vận tải rất tốt nên tôi quyết định gắn bó lâu dài."</p>
-                                        <h5 class="fw-bold mb-1">Chị Ngọc Anh</h5>
-                                        <p class="text-muted">Hà Nội</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 2 -->
-                            <div class="carousel-item">
-                                <div class="card border-0 shadow-sm p-4 p-lg-5 testimonial-card">
-                                    <div class="card-body text-center">
-                                        <p class="card-text fst-italic lead mb-4">"Dịch vụ chuyển phát đi quốc tế khá nhanh so với các đơn vị khác. Tôi rất hài lòng!"</p>
-                                        <h5 class="fw-bold mb-1">Anh Minh Khôi</h5>
-                                        <p class="text-muted">TP. Hồ Chí Minh</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 3 -->
-                            <div class="carousel-item">
-                                <div class="card border-0 shadow-sm p-4 p-lg-5 testimonial-card">
-                                    <div class="card-body text-center">
-                                        <p class="card-text fst-italic lead mb-4">"Dịch vụ của VUTEK EXPRESS rất tốt, công ty chúng tôi đã sử dụng trong nhiều năm qua."</p>
-                                        <h5 class="fw-bold mb-1">Anh Trung Dũng</h5>
-                                        <p class="text-muted">Đà Nẵng</p>
-                                    </div>
-                                </div>
-                            </div>
+                
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="tracking-form">
+                        <h3 class="text-center mb-4" style="color: var(--primary-color);">
+                            <i class="fas fa-box me-2"></i>Tra Cứu Đơn Hàng
+                        </h3>
+                        <div class="mb-3">
+                            <label class="form-label">Mã vận đơn</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="VD: VTE-2023-00123">
                         </div>
-                        <!-- Nút điều khiển -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
+                        <div class="mb-3">
+                            <label class="form-label">Số điện thoại</label>
+                            <input type="tel" class="form-control form-control-lg" placeholder="Nhập số điện thoại">
+                        </div>
+                        <button class="btn btn-danger btn-lg w-100">
+                            <i class="fas fa-search me-2"></i>Tra Cứu Ngay
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
+                        <p class="text-muted small mt-3 text-center">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Hỗ trợ tra cứu 24/7. Liên hệ hotline nếu cần hỗ trợ thêm.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======= Footer ======= -->
-    <footer class="bg-dark text-white py-5">
+    <!-- ====== SERVICES ====== -->
+    <section class="py-5" id="services">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h4><i class="fas fa-shipping-fast me-2"></i>VUTEK EXPRESS</h4>
-                    <p>Đơn vị chuyển phát nhanh uy tín, chuyên nghiệp hàng đầu.</p>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Dịch Vụ Chuyển Phát</h2>
+                <p class="text-muted">Các giải pháp vận chuyển toàn diện cho mọi nhu cầu</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card shadow-sm h-100 text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h4 class="fw-bold">Nội Thành</h4>
+                        <p>Giao hàng siêu tốc trong nội thành Hà Nội, TP.HCM. Cam kết 2-4 giờ nhận hàng.</p>
+                        <a href="#" class="btn btn-outline-danger mt-2">Xem chi tiết</a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Liên Hệ</h5>
-                    <p><i class="fas fa-phone me-2"></i> 0123.456.789</p>
-                    <p><i class="fas fa-envelope me-2"></i> contact@vutekexpress.com</p>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card shadow-sm h-100 text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
+                        <h4 class="fw-bold">Liên Tỉnh</h4>
+                        <p>Vận chuyển hàng hóa giữa các tỉnh thành nhanh chóng, đảm bảo thời gian.</p>
+                        <a href="#" class="btn btn-outline-danger mt-2">Xem chi tiết</a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Theo Dõi Chúng Tôi</h5>
-                    <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-zalo fa-2x"></i></a>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card shadow-sm h-100 text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <h4 class="fw-bold">Quốc Tế</h4>
+                        <p>Chuyển phát đi các nước trên thế giới với thời gian và chi phí tối ưu nhất.</p>
+                        <a href="#" class="btn btn-outline-danger mt-2">Xem chi tiết</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card shadow-sm h-100 text-center p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-pallet"></i>
+                        </div>
+                        <h4 class="fw-bold">Vận Tải Hàng Hóa</h4>
+                        <p>Vận chuyển hàng hóa số lượng lớn, container cho doanh nghiệp.</p>
+                        <a href="#" class="btn btn-outline-danger mt-2">Xem chi tiết</a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ====== STATS COUNTER ====== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-number">5,000+</div>
+                    <p>Khách Hàng</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-number">50,000+</div>
+                    <p>Đơn Hàng/Tháng</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-number">63</div>
+                    <p>Tỉnh Thành</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-number">24/7</div>
+                    <p>Hỗ Trợ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PRICING ====== -->
+    <section class="py-5 bg-light" id="pricing">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Bảng Giá Tham Khảo</h2>
+                <p class="text-muted">Chi phí minh bạch, không phát sinh</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="table-responsive">
+                        <table class="table table-hover bg-white rounded shadow-sm">
+                            <thead class="table-danger">
+                                <tr>
+                                    <th>Loại Hàng</th>
+                                    <th>Nội Thành (Hà Nội/TP.HCM)</th>
+                                    <th>Liên Tỉnh Gần</th>
+                                    <th>Liên Tỉnh Xa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tài liệu (dưới 1kg)</td>
+                                    <td>20,000 đ</td>
+                                    <td>25,000 đ</td>
+                                    <td>30,000 đ</td>
+                                </tr>
+                                <tr>
+                                    <td>Hàng hóa nhỏ (1-5kg)</td>
+                                    <td>25,000 đ</td>
+                                    <td>35,000 đ</td>
+                                    <td>45,000 đ</td>
+                                </tr>
+                                <tr>
+                                    <td>Hàng hóa vừa (5-10kg)</td>
+                                    <td>35,000 đ</td>
+                                    <td>50,000 đ</td>
+                                    <td>65,000 đ</td>
+                                </tr>
+                                <tr>
+                                    <td>Hàng hóa lớn (10-20kg)</td>
+                                    <td>50,000 đ</td>
+                                    <td>75,000 đ</td>
+                                    <td>95,000 đ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-4">
+                        <p class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Giá trên chưa bao gồm VAT. Liên hệ để có báo giá chi tiết cho hàng đặc biệt.
+                        </p>
+                        <a href="#contact" class="btn btn-danger">
+                            <i class="fas fa-file-invoice-dollar me-2"></i>Yêu Cầu Báo Giá Chi Tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TESTIMONIALS ====== -->
+    <section class="py-5" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Khách Hàng Yêu Mến Nói Gì Về Chúng Tôi</h2>
+                <p class="text-muted">Những phản hồi chân thực là động lực để chúng tôi phục vụ tốt hơn mỗi ngày.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 h-100">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left text-danger fs-4"></i>
+                        </div>
+                        <p class="testimonial-text">"Tôi biết VUTEK EXPRESS qua một người quen giới thiệu. Dịch vụ vận tải rất tốt nên tôi quyết định gắn bó lâu dài cùng VUTEK EXPRESS."</p>
+                        <div class="mt-4">
+                            <h5 class="client-name">Chị Thảo</h5>
+                            <p class="text-muted mb-0">Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 h-100">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left text-danger fs-4"></i>
+                        </div>
+                        <p class="testimonial-text">"Dịch vụ chuyển phát đi quốc tế khá nhanh so với các đơn vị khác. Đóng gói cẩn thận, nhân viên nhiệt tình."</p>
+                        <div class="mt-4">
+                            <h5 class="client-name">Anh Nam</h5>
+                            <p class="text-muted mb-0">TP Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card p-4 h-100">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left text-danger fs-4"></i>
+                        </div>
+                        <p class="testimonial-text">"Dịch vụ của chuyển phát VUTEK EXPRESS rất tốt, công ty chúng tôi đã sử dụng trong nhiều năm qua. Rất đáng tin cậy."</p>
+                        <div class="mt-4">
+                            <h5 class="client-name">Anh Tuấn</h5>
+                            <p class="text-muted mb-0">Quảng Ninh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section class="py-5 bg-light" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Liên Hệ Với Chúng Tôi</h2>
+                    <p class="mb-4">Đội ngũ VUTEK EXPRESS luôn sẵn sàng hỗ trợ 24/7 để giải đáp mọi thắc mắc và tư vấn dịch vụ tốt nhất cho quý khách.</p>
+                    
+                    <div class="mb-4">
+                        <h5><i class="fas fa-map-marker-alt text-danger me-2"></i> Trụ sở chính</h5>
+                        <p class="ms-4">Số 123, Đường ABC, Quận XYZ, Hà Nội</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5><i class="fas fa-phone-alt text-danger me-2"></i> Điện thoại</h5>
+                        <p class="ms-4">
+                            <a href="tel:0123456789" class="text-decoration-none text-dark">0123.456.789</a> (Hỗ trợ dịch vụ)<br>
+                            <a href="tel:0987654321" class="text-decoration-none text-dark">0987.654.321</a> (Khiếu nại)
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5><i class="fas fa-envelope text-danger me-2"></i> Email</h5>
+                        <p class="ms-4">
+                            <a href="mailto:info@vutekexpress.vn" class="text-decoration-none text-dark">info@vutekexpress.vn</a><br>
+                            <a href="mailto:support@vutekexpress.vn" class="text-decoration-none text-dark">support@vutekexpress.vn</a>
+                        </p>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5 class="mb-3">Kết nối với chúng tôi</h5>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-zalo"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h4 class="mb-4">Gửi yêu cầu tư vấn</h4>
+                        <form>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Họ và tên *</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Số điện thoại *</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Dịch vụ quan tâm</label>
+                                <select class="form-select">
+                                    <option>Chuyển phát nội thành</option>
+                                    <option>Chuyển phát liên tỉnh</option>
+                                    <option>Chuyển phát quốc tế</option>
+                                    <option>Vận tải hàng hóa</option>
+                                    <option>Khác</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Nội dung yêu cầu</label>
+                                <textarea class="form-control" rows="4"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-danger btn-lg w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Gửi Yêu Cầu
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="mb-4">
+                        <i class="fas fa-shipping-fast me-2"></i>VUTEK EXPRESS
+                    </h4>
+                    <p>Đơn vị chuyển phát nhanh uy tín hàng đầu, cam kết mang đến dịch vụ tốt nhất với chi phí hợp lý nhất.</p>
+                    <p class="mt-3">
+                        <i class="fas fa-clock me-2"></i>Giờ làm việc: Thứ 2 - Chủ nhật: 7:00 - 21:00
+                    </p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-4">Dịch Vụ</h5>
+                    <a href="#" class="footer-link">Chuyển phát nội thành</a>
+                    <a href="#" class="footer-link">Chuyển phát liên tỉnh</a>
+                    <a href="#" class="footer-link">Chuyển phát quốc tế</a>
+                    <a href="#" class="footer-link">Vận tải hàng hóa</a>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-4">Hỗ Trợ</h5>
+                    <a href="#" class="footer-link">Tra cứu vận đơn</a>
+                    <a href="#" class="footer-link">Bảng giá dịch vụ</a>
+                    <a href="#" class="footer-link">Câu hỏi thường gặp</a>
+                    <a href="#" class="footer-link">Chính sách vận chuyển</a>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">Đăng ký nhận tin</h5>
+                    <p>Nhận thông tin khuyến mãi và cập nhật dịch vụ mới nhất từ chúng tôi.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email của bạn">
+                        <button class="btn btn-danger" type="button">Đăng ký</button>
+                    </div>
+                </div>
+            </div>
+            
             <hr class="bg-light">
-            <div class="text-center pt-3">
-                <p>© 2023 VUTEK EXPRESS. All rights reserved.</p>
+            
+            <div class="row py-3">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2023 VUTEK EXPRESS. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="footer-link me-3">Chính sách bảo mật</a>
+                    <a href="#" class="footer-link">Điều khoản sử dụng</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- ====== SCRIPTS ====== -->
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Smooth Scroll -->
     <script>
-        // Khởi tạo carousel với thời gian chuyển slide
-        const myCarousel = document.getElementById('testimonialCarousel');
-        const carousel = new bootstrap.Carousel(myCarousel, {
-            interval: 4000, // Chuyển slide mỗi 4 giây
-            wrap: true
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
