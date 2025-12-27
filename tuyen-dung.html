@@ -1,1 +1,1114 @@
 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuyển Dụng - Gia Nhập Đội Ngũ EXPRESS</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .job-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #dc3545;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+        }
+        
+        .job-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .job-type.full-time {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+        
+        .job-type.part-time {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+        
+        .job-type.intern {
+            background: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+        }
+        
+        .job-location, .job-salary {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .job-location i, .job-salary i {
+            width: 20px;
+        }
+        
+        .featured-job {
+            border: 2px solid #dc3545;
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #dc3545;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: #f8f9fa;
+        }
+        
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(220, 53, 69, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .application-step {
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .application-step::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -25px;
+            width: 50px;
+            height: 2px;
+            background: #ddd;
+            z-index: 1;
+        }
+        
+        .application-step:last-child::after {
+            display: none;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #dc3545;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .position-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .filter-btn {
+            border-radius: 20px;
+            padding: 8px 20px;
+            margin: 5px;
+        }
+        
+        .filter-btn.active {
+            background: #dc3545;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .application-step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header class="header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold text-danger fs-3" href="index.html">
+                    <i class="fas fa-shipping-fast me-2"></i>EXPRESS
+                </a>
+                
+                <!-- Hotline -->
+                <a class="btn btn-outline-danger d-lg-none ms-auto me-3" href="tel:19086980">
+                    <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                </a>
+                
+                <!-- Navbar Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Navbar Menu -->
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tim-buu-cuc.html">Tìm bưu cục</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ho-tro.html">Hỗ trợ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dich-vu.html">Dịch vụ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tim-24.7.html">Tin 24/7</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="tuwendung.html">Tuyển dụng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="vechungtoi.html">Về chúng tôi</a>
+                        </li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <a class="btn btn-danger px-4" href="tel:19086980">
+                                <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content pt-5 mt-5">
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-danger text-white">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-5 fw-bold mb-4">Gia Nhập Đội Ngũ EXPRESS</h1>
+                        <p class="lead mb-4">Cùng chúng tôi xây dựng tương lai của ngành logistics. Tìm kiếm những tài năng xuất sắc để cùng phát triển và đổi mới.</p>
+                        <div class="d-flex gap-3">
+                            <a href="#viec-lam" class="btn btn-light btn-lg px-4">
+                                <i class="fas fa-briefcase me-2"></i>Xem việc làm
+                            </a>
+                            <a href="#ung-tuyen" class="btn btn-outline-light btn-lg px-4">
+                                <i class="fas fa-file-upload me-2"></i>Ứng tuyển ngay
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <img src="https://cdn.pixabay.com/photo/2017/05/09/13/33/laptop-2298286_1280.png" 
+                             alt="Tuyển dụng" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Join Us -->
+        <section class="why-join-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Tại Sao Nên Làm Việc Tại EXPRESS?</h2>
+                    <p class="lead text-muted">Môi trường làm việc chuyên nghiệp, năng động và nhiều cơ hội phát triển</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-dollar-sign text-danger fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold mb-3">Lương Thưởng Cạnh Tranh</h5>
+                            <p class="text-muted">Mức lương hấp dẫn, thưởng theo hiệu suất và nhiều phúc lợi tài chính khác.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-graduation-cap text-danger fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold mb-3">Đào Tạo & Phát Triển</h5>
+                            <p class="text-muted">Chương trình đào tạo liên tục, cơ hội thăng tiến rõ ràng và học bổng du học.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-heartbeat text-danger fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold mb-3">Bảo Hiểm & Sức Khỏe</h5>
+                            <p class="text-muted">Bảo hiểm sức khỏe toàn diện, khám sức khỏe định kỳ và các gói chăm sóc y tế.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <i class="fas fa-glass-cheers text-danger fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold mb-3">Văn Hóa Doanh Nghiệp</h5>
+                            <p class="text-muted">Môi trường thân thiện, các hoạt động team building và sự kiện văn hóa thường xuyên.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Filters -->
+        <section class="filters-section py-5 bg-light">
+            <div class="container">
+                <h3 class="fw-bold text-center mb-4">Lọc Theo Danh Mục</h3>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <button class="btn filter-btn btn-outline-danger active" data-filter="all">Tất cả</button>
+                    <button class="btn filter-btn btn-outline-danger" data-filter="technology">Công nghệ</button>
+                    <button class="btn filter-btn btn-outline-danger" data-filter="logistics">Vận chuyển</button>
+                    <button class="btn filter-btn btn-outline-danger" data-filter="sale">Kinh doanh</button>
+                    <button class="btn filter-btn btn-outline-danger" data-filter="support">Hỗ trợ</button>
+                    <button class="btn filter-btn btn-outline-danger" data-filter="intern">Thực tập</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Listings -->
+        <section id="viec-lam" class="jobs-section py-5">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h2 class="h1 fw-bold text-danger">Vị Trí Tuyển Dụng</h2>
+                    <div class="text-muted">
+                        <span id="jobCount">6</span> vị trí đang tuyển
+                    </div>
+                </div>
+                
+                <div class="row g-4" id="jobListings">
+                    <!-- Job 1 - Featured -->
+                    <div class="col-lg-6" data-category="technology">
+                        <div class="card job-card featured-job shadow-sm h-100">
+                            <span class="featured-badge">Nổi bật</span>
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h4 class="fw-bold mb-2">Senior Frontend Developer</h4>
+                                        <div class="job-type full-time mb-2">Full-time</div>
+                                    </div>
+                                    <div class="text-danger fw-bold">$2,000 - $3,000</div>
+                                </div>
+                                
+                                <p class="card-text mb-4">Phát triển và tối ưu giao diện người dùng cho các ứng dụng web và mobile của EXPRESS.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="job-location mb-2">
+                                            <i class="fas fa-map-marker-alt text-danger"></i>
+                                            Hà Nội
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-calendar-alt text-danger"></i>
+                                            Đăng: 20/12/2024
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="job-salary mb-2">
+                                            <i class="fas fa-briefcase text-danger"></i>
+                                            3+ năm kinh nghiệm
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-clock text-danger"></i>
+                                            Hạn: 20/01/2025
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-2">Yêu Cầu:</h6>
+                                    <ul class="small text-muted mb-0">
+                                        <li>Thành thạo ReactJS, VueJS hoặc Angular</li>
+                                        <li>Kinh nghiệm với RESTful APIs</li>
+                                        <li>Hiểu biết về UI/UX principles</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-light text-dark me-2">JavaScript</span>
+                                        <span class="badge bg-light text-dark me-2">React</span>
+                                        <span class="badge bg-light text-dark">TypeScript</span>
+                                    </div>
+                                    <a href="#ung-tuyen" class="btn btn-danger">Ứng tuyển ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Job 2 -->
+                    <div class="col-lg-6" data-category="logistics">
+                        <div class="card job-card shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h4 class="fw-bold mb-2">Quản Lý Vận Chuyển</h4>
+                                        <div class="job-type full-time mb-2">Full-time</div>
+                                    </div>
+                                    <div class="text-danger fw-bold">$1,500 - $2,200</div>
+                                </div>
+                                
+                                <p class="card-text mb-4">Quản lý và tối ưu hóa quy trình vận chuyển, đảm bảo dịch vụ đúng hẹn và chất lượng.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="job-location mb-2">
+                                            <i class="fas fa-map-marker-alt text-danger"></i>
+                                            TP.HCM
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-calendar-alt text-danger"></i>
+                                            Đăng: 18/12/2024
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="job-salary mb-2">
+                                            <i class="fas fa-briefcase text-danger"></i>
+                                            5+ năm kinh nghiệm
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-clock text-danger"></i>
+                                            Hạn: 18/01/2025
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-2">Yêu Cầu:</h6>
+                                    <ul class="small text-muted mb-0">
+                                        <li>Kinh nghiệm quản lý logistics</li>
+                                        <li>Kỹ năng phân tích và giải quyết vấn đề</li>
+                                        <li>Khả năng làm việc nhóm</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-light text-dark me-2">Logistics</span>
+                                        <span class="badge bg-light text-dark me-2">Quản lý</span>
+                                        <span class="badge bg-light text-dark">Vận chuyển</span>
+                                    </div>
+                                    <a href="#ung-tuyen" class="btn btn-outline-danger">Ứng tuyển</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Job 3 -->
+                    <div class="col-lg-6" data-category="sale">
+                        <div class="card job-card shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h4 class="fw-bold mb-2">Chuyên Viên Kinh Doanh</h4>
+                                        <div class="job-type full-time mb-2">Full-time</div>
+                                    </div>
+                                    <div class="text-danger fw-bold">$1,000 - $1,800 + Hoa hồng</div>
+                                </div>
+                                
+                                <p class="card-text mb-4">Tìm kiếm và phát triển khách hàng doanh nghiệp, mở rộng thị trường cho dịch vụ của EXPRESS.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="job-location mb-2">
+                                            <i class="fas fa-map-marker-alt text-danger"></i>
+                                            Đà Nẵng
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-calendar-alt text-danger"></i>
+                                            Đăng: 15/12/2024
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="job-salary mb-2">
+                                            <i class="fas fa-briefcase text-danger"></i>
+                                            2+ năm kinh nghiệm
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-clock text-danger"></i>
+                                            Hạn: 15/01/2025
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-2">Yêu Cầu:</h6>
+                                    <ul class="small text-muted mb-0">
+                                        <li>Kỹ năng giao tiếp và đàm phán tốt</li>
+                                        <li>Có kinh nghiệm kinh doanh B2B</li>
+                                        <li>Khả năng làm việc độc lập</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-light text-dark me-2">Sales</span>
+                                        <span class="badge bg-light text-dark me-2">B2B</span>
+                                        <span class="badge bg-light text-dark">Marketing</span>
+                                    </div>
+                                    <a href="#ung-tuyen" class="btn btn-outline-danger">Ứng tuyển</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Job 4 -->
+                    <div class="col-lg-6" data-category="support">
+                        <div class="card job-card shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h4 class="fw-bold mb-2">Nhân Viên Hỗ Trợ Khách Hàng</h4>
+                                        <div class="job-type full-time mb-2">Full-time</div>
+                                    </div>
+                                    <div class="text-danger fw-bold">$800 - $1,200</div>
+                                </div>
+                                
+                                <p class="card-text mb-4">Hỗ trợ và giải đáp thắc mắc của khách hàng qua điện thoại, email và chat trực tuyến.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="job-location mb-2">
+                                            <i class="fas fa-map-marker-alt text-danger"></i>
+                                            TP.HCM
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-calendar-alt text-danger"></i>
+                                            Đăng: 12/12/2024
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="job-salary mb-2">
+                                            <i class="fas fa-briefcase text-danger"></i>
+                                            1+ năm kinh nghiệm
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-clock text-danger"></i>
+                                            Hạn: 12/01/2025
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-2">Yêu Cầu:</h6>
+                                    <ul class="small text-muted mb-0">
+                                        <li>Kỹ năng giao tiếp tốt</li>
+                                        <li>Khả năng xử lý tình huống</li>
+                                        <li>Thái độ thân thiện, nhiệt tình</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-light text-dark me-2">CS</span>
+                                        <span class="badge bg-light text-dark me-2">Support</span>
+                                        <span class="badge bg-light text-dark">Communication</span>
+                                    </div>
+                                    <a href="#ung-tuyen" class="btn btn-outline-danger">Ứng tuyển</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Job 5 -->
+                    <div class="col-lg-6" data-category="technology">
+                        <div class="card job-card shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h4 class="fw-bold mb-2">Backend Developer</h4>
+                                        <div class="job-type full-time mb-2">Full-time</div>
+                                    </div>
+                                    <div class="text-danger fw-bold">$1,800 - $2,500</div>
+                                </div>
+                                
+                                <p class="card-text mb-4">Phát triển và bảo trì hệ thống backend, xây dựng API và các dịch vụ web.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="job-location mb-2">
+                                            <i class="fas fa-map-marker-alt text-danger"></i>
+                                            Hà Nội
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-calendar-alt text-danger"></i>
+                                            Đăng: 10/12/2024
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="job-salary mb-2">
+                                            <i class="fas fa-briefcase text-danger"></i>
+                                            3+ năm kinh nghiệm
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-clock text-danger"></i>
+                                            Hạn: 10/01/2025
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-2">Yêu Cầu:</h6>
+                                    <ul class="small text-muted mb-0">
+                                        <li>Thành thạo Node.js/Python/Java</li>
+                                        <li>Kinh nghiệm với database SQL/NoSQL</li>
+                                        <li>Hiểu biết về microservices</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-light text-dark me-2">Node.js</span>
+                                        <span class="badge bg-light text-dark me-2">MongoDB</span>
+                                        <span class="badge bg-light text-dark">API</span>
+                                    </div>
+                                    <a href="#ung-tuyen" class="btn btn-outline-danger">Ứng tuyển</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Job 6 -->
+                    <div class="col-lg-6" data-category="intern">
+                        <div class="card job-card shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <h4 class="fw-bold mb-2">Thực Tập Sinh Marketing</h4>
+                                        <div class="job-type intern mb-2">Thực tập</div>
+                                    </div>
+                                    <div class="text-danger fw-bold">Trợ cấp + Hỗ trợ</div>
+                                </div>
+                                
+                                <p class="card-text mb-4">Hỗ trợ đội ngũ marketing trong các chiến dịch truyền thông và phát triển nội dung.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="job-location mb-2">
+                                            <i class="fas fa-map-marker-alt text-danger"></i>
+                                            TP.HCM
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-calendar-alt text-danger"></i>
+                                            Đăng: 08/12/2024
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="job-salary mb-2">
+                                            <i class="fas fa-briefcase text-danger"></i>
+                                            Sinh viên năm 3,4
+                                        </div>
+                                        <div class="job-salary">
+                                            <i class="fas fa-clock text-danger"></i>
+                                            Hạn: 08/01/2025
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-2">Yêu Cầu:</h6>
+                                    <ul class="small text-muted mb-0">
+                                        <li>Sinh viên Marketing, Truyền thông</li>
+                                        <li>Kỹ năng viết content cơ bản</li>
+                                        <li>Đam mê học hỏi và sáng tạo</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-light text-dark me-2">Marketing</span>
+                                        <span class="badge bg-light text-dark me-2">Content</span>
+                                        <span class="badge bg-light text-dark">Social Media</span>
+                                    </div>
+                                    <a href="#ung-tuyen" class="btn btn-outline-danger">Ứng tuyển</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <p class="text-muted">Không tìm thấy vị trí phù hợp? <a href="#ung-tuyen" class="text-danger fw-bold">Gửi CV để chúng tôi liên hệ khi có vị trí mới</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Process -->
+        <section class="process-section py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Quy Trình Tuyển Dụng</h2>
+                    <p class="lead text-muted">4 bước đơn giản để gia nhập đội ngũ EXPRESS</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="application-step">
+                            <div class="step-number">1</div>
+                            <h5 class="fw-bold mb-3">Nộp hồ sơ</h5>
+                            <p class="text-muted">Điền form ứng tuyển và gửi CV trực tuyến qua website.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="application-step">
+                            <div class="step-number">2</div>
+                            <h5 class="fw-bold mb-3">Sàng lọc</h5>
+                            <p class="text-muted">Đội ngũ HR sẽ xem xét và liên hệ với ứng viên phù hợp.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="application-step">
+                            <div class="step-number">3</div>
+                            <h5 class="fw-bold mb-3">Phỏng vấn</h5>
+                            <p class="text-muted">Phỏng vấn trực tiếp hoặc online với quản lý bộ phận.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="application-step">
+                            <div class="step-number">4</div>
+                            <h5 class="fw-bold mb-3">Nhận việc</h5>
+                            <p class="text-muted">Nhận offer và hoàn tất thủ tục gia nhập công ty.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Members -->
+        <section class="team-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Gặp Gỡ Đội Ngũ Của Chúng Tôi</h2>
+                    <p class="lead text-muted">Những người đang làm nên sự thành công của EXPRESS</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="team-member bg-white shadow-sm">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                                 alt="Team member" class="member-img">
+                            <h5 class="fw-bold mb-2">Trần Minh Đức</h5>
+                            <div class="position-tag mb-3">Trưởng Phòng Công Nghệ</div>
+                            <p class="text-muted small">"Làm việc tại EXPRESS mang đến cho tôi cơ hội đóng góp vào sự phát triển của ngành logistics số."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="team-member bg-white shadow-sm">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" 
+                                 alt="Team member" class="member-img">
+                            <h5 class="fw-bold mb-2">Nguyễn Thị Hương</h5>
+                            <div class="position-tag mb-3">Quản Lý Vận Chuyển</div>
+                            <p class="text-muted small">"Môi trường làm việc năng động và đồng nghiệp thân thiện là điều tôi yêu thích nhất tại đây."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="team-member bg-white shadow-sm">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" 
+                                 alt="Team member" class="member-img">
+                            <h5 class="fw-bold mb-2">Lê Văn Tùng</h5>
+                            <div class="position-tag mb-3">Senior Developer</div>
+                            <p class="text-muted small">"EXPRESS luôn tạo điều kiện để nhân viên học hỏi và phát triển kỹ năng chuyên môn."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Form -->
+        <section id="ung-tuyen" class="application-section py-5 bg-danger text-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h2 class="h1 fw-bold mb-4">Sẵn Sàng Ứng Tuyển?</h2>
+                        <p class="lead mb-4">Điền thông tin và gửi CV của bạn. Chúng tôi sẽ liên hệ lại trong vòng 3-5 ngày làm việc.</p>
+                        
+                        <div class="mb-4">
+                            <h5 class="fw-bold mb-3">Thông Tin Liên Hệ</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-envelope me-2"></i>
+                                    <strong>Email:</strong> tuyendung@express.vn
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-phone me-2"></i>
+                                    <strong>Hotline:</strong> 1900 6980 (Ext. 2)
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                    <strong>Địa chỉ:</strong> 123 Nguyễn Văn Linh, Quận 7, TP.HCM
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card shadow border-0">
+                            <div class="card-body p-4">
+                                <h4 class="fw-bold text-dark mb-4">Form Ứng Tuyển</h4>
+                                
+                                <form id="applicationForm">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="appName" class="form-label">Họ và tên *</label>
+                                            <input type="text" class="form-control" id="appName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="appPhone" class="form-label">Số điện thoại *</label>
+                                            <input type="tel" class="form-control" id="appPhone" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="appEmail" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="appEmail" required>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="appPosition" class="form-label">Vị trí ứng tuyển *</label>
+                                        <select class="form-select" id="appPosition" required>
+                                            <option value="" selected disabled>Chọn vị trí</option>
+                                            <option>Senior Frontend Developer</option>
+                                            <option>Quản Lý Vận Chuyển</option>
+                                            <option>Chuyên Viên Kinh Doanh</option>
+                                            <option>Nhân Viên Hỗ Trợ Khách Hàng</option>
+                                            <option>Backend Developer</option>
+                                            <option>Thực Tập Sinh Marketing</option>
+                                            <option>Khác (Ghi rõ trong CV)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="appExperience" class="form-label">Kinh nghiệm làm việc (năm) *</label>
+                                        <input type="number" class="form-control" id="appExperience" min="0" max="50" required>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="appCV" class="form-label">Tải lên CV (PDF/DOC, max 5MB) *</label>
+                                        <input type="file" class="form-control" id="appCV" accept=".pdf,.doc,.docx" required>
+                                        <div class="form-text">Định dạng: PDF, DOC, DOCX. Tối đa 5MB.</div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="appMessage" class="form-label">Lời nhắn (nếu có)</label>
+                                        <textarea class="form-control" id="appMessage" rows="3"></textarea>
+                                    </div>
+                                    
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="appAgree" required>
+                                        <label class="form-check-label" for="appAgree">
+                                            Tôi đồng ý với <a href="#" class="text-danger">chính sách bảo mật</a> và cho phép EXPRESS xử lý thông tin cá nhân của tôi cho mục đích tuyển dụng.
+                                        </label>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-danger w-100 py-2">
+                                        <i class="fas fa-paper-plane me-2"></i>Gửi hồ sơ ứng tuyển
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer bg-dark text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-lg-4 mb-4">
+                    <h4 class="fw-bold mb-3">
+                        <i class="fas fa-shipping-fast me-2"></i>EXPRESS
+                    </h4>
+                    <p class="mb-3">Dịch vụ chuyển phát nhanh hàng đầu Việt Nam, cam kết mang đến trải nghiệm tốt nhất cho khách hàng.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Liên Kết Nhanh</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="tim-buu-cuc.html" class="text-white-50 text-decoration-none">Tìm bưu cục</a></li>
+                        <li class="mb-2"><a href="dich-vu.html" class="text-white-50 text-decoration-none">Dịch vụ</a></li>
+                        <li class="mb-2"><a href="tuwendung.html" class="text-white-50 text-decoration-none">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Hỗ Trợ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Câu hỏi thường gặp</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Hướng dẫn sử dụng</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Chính sách bảo mật</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Điều khoản dịch vụ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Liên Hệ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            123 Nguyễn Văn Linh, Quận 7, TP.HCM
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            1900 6980
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            hotro@express.vn
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock me-2"></i>
+                            8:00 - 20:00 (Thứ 2 - Chủ nhật)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="bg-secondary">
+            
+            <div class="row pt-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2024 EXPRESS. Tất cả các quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Được phát triển bởi <a href="vechungtoi.html" class="text-danger text-decoration-none">EXPRESS Team</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
+    <script>
+        // Job Filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                const jobListings = document.querySelectorAll('#jobListings > div');
+                let visibleCount = 0;
+                
+                jobListings.forEach(job => {
+                    const category = job.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        job.style.display = 'block';
+                        visibleCount++;
+                        
+                        // Add fade in animation
+                        job.style.opacity = '0';
+                        job.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            job.style.transition = 'all 0.5s ease';
+                            job.style.opacity = '1';
+                            job.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        job.style.display = 'none';
+                    }
+                });
+                
+                // Update job count
+                document.getElementById('jobCount').textContent = visibleCount;
+                
+                // Show toast notification
+                const filterText = this.textContent;
+                EXPRESS.showToast('Đã lọc', `Hiển thị ${visibleCount} vị trí trong danh mục: ${filterText}`, 'info');
+            });
+        });
+        
+        // Application Form Submission
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate file size
+            const fileInput = document.getElementById('appCV');
+            if (fileInput.files.length > 0) {
+                const fileSize = fileInput.files[0].size / 1024 / 1024; // in MB
+                if (fileSize > 5) {
+                    EXPRESS.showToast('Lỗi', 'Kích thước file vượt quá 5MB. Vui lòng chọn file nhỏ hơn.', 'error');
+                    return;
+                }
+            }
+            
+            // Show loading
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Đang gửi hồ sơ...';
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                EXPRESS.showToast(
+                    'Thành công!', 
+                    'Hồ sơ ứng tuyển của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại trong 3-5 ngày làm việc.', 
+                    'success'
+                );
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 2000);
+        });
+        
+        // Add click effect to job cards
+        document.querySelectorAll('.job-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('a') && !e.target.closest('button')) {
+                    // Toggle expanded view
+                    const description = this.querySelector('.card-text');
+                    const requirements = this.querySelector('ul');
+                    
+                    if (description.style.maxHeight && description.style.maxHeight !== 'none') {
+                        description.style.maxHeight = 'none';
+                        requirements.style.maxHeight = 'none';
+                        this.style.height = 'auto';
+                    } else {
+                        description.style.maxHeight = '60px';
+                        requirements.style.maxHeight = '60px';
+                        this.style.height = '100%';
+                    }
+                }
+            });
+        });
+        
+        // Initialize tooltips for skill badges
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        
+        // Add animation to application steps on scroll
+        const observerOptions = {
+            threshold: 0.3
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.application-step').forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(20px)';
+            step.style.transition = 'all 0.5s ease';
+            observer.observe(step);
+        });
+    </script>
+</body>
+</html>
