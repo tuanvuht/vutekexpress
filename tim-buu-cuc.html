@@ -3,615 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm Bưu Cục - VUTEK EXPRESS</title>
+    <title>Tìm Bưu Cục - Dịch Vụ Chuyển Phát</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- CSS riêng cho trang này -->
-    <style>
-        :root {
-            --primary-color: #e30613;
-            --secondary-color: #333333;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            padding-top: 76px; /* Để không bị navbar che */
-        }
-        
-        /* Header giống trang chủ */
-        .navbar {
-            background-color: white !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .navbar-brand {
-            color: var(--primary-color) !important;
-            font-weight: 700;
-            font-size: 1.8rem;
-        }
-        
-        .nav-link {
-            color: #333 !important;
-            font-weight: 500;
-            margin: 0 8px;
-        }
-        
-        .nav-link.active {
-            color: var(--primary-color) !important;
-        }
-        
-        /* Hero cho trang con */
-        .page-hero {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 80px 0 40px;
-            text-align: center;
-        }
-        
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        /* CSS cho module tìm bưu cục */
-        .location-item {
-            border-left: 4px solid transparent;
-            transition: all 0.2s;
-            padding: 1rem 1.25rem;
-            cursor: pointer;
-        }
-        
-        .location-item:hover, .location-item.active {
-            border-left-color: var(--primary-color);
-            background-color: rgba(227, 6, 19, 0.05);
-        }
-        
-        .location-item.active {
-            background-color: rgba(227, 6, 19, 0.1);
-        }
-        
-        .badge-custom {
-            font-size: 0.7rem;
-            padding: 0.25rem 0.5rem;
-        }
-        
-        .badge-main { background-color: #e30613; }
-        .badge-type1 { background-color: #ffc107; color: #000; }
-        .badge-agent { background-color: #17a2b8; }
-        
-        #map-container {
-            height: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .map-placeholder {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        
-        .filter-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #222;
-            color: #ddd;
-            margin-top: 50px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            #map-container {
-                height: 350px;
-            }
-        }
-    </style>
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ====== NAVIGATION ====== -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-shipping-fast me-2"></i>VUTEK EXPRESS
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dich-vu.html">Dịch vụ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="tim-buu-cuc.html">Tìm bưu cục</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tin-tuc.html">Tin tức</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="lien-he.html">Liên hệ</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-danger" href="tel:0123456789">
-                            <i class="fas fa-phone-alt me-1"></i> 0123.456.789
-                        </a>
-                    </li>
-                </ul>
+    <!-- HEADER & NAVIGATION -->
+    <header class="header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold text-danger fs-3" href="index.html">
+                    <i class="fas fa-shipping-fast me-2"></i>EXPRESS
+                </a>
+                
+                <!-- Hotline -->
+                <a class="btn btn-outline-danger d-lg-none ms-auto me-3" href="tel:19086980">
+                    <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                </a>
+                
+                <!-- Navbar Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Navbar Menu -->
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="tim-buu-cuc.html">Tìm bưu cục</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ho-tro.html">Hỗ trợ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dich-vu.html">Dịch vụ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tim-24.7.html">Tin 24/7</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tuwendung.html">Tuyển dụng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="vechungtoi.html">Về chúng tôi</a>
+                        </li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <a class="btn btn-danger px-4" href="tel:19086980">
+                                <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- ====== HERO SECTION ====== -->
-    <section class="page-hero">
-        <div class="container">
-            <h1 class="page-title">Tìm Bưu Cục Gần Bạn</h1>
-            <p class="lead">Hệ thống hơn 200 bưu cục trên toàn quốc, sẵn sàng phục vụ 24/7</p>
-        </div>
-    </section>
+    <!-- MAIN CONTENT -->
+    <main class="main-content pt-5 mt-5">
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-light">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-5 fw-bold text-danger mb-4">Tìm Bưu Cục Gần Bạn</h1>
+                        <p class="lead mb-4">Tra cứu nhanh chóng hơn 1.000 bưu cục trên toàn quốc. Dễ dàng tìm điểm giao dịch gần nhất với bạn.</p>
+                        <div class="d-flex gap-3">
+                            <a href="#tim-kiem" class="btn btn-danger btn-lg px-4">
+                                <i class="fas fa-search me-2"></i>Tìm Ngay
+                            </a>
+                            <a href="#huong-dan" class="btn btn-outline-danger btn-lg px-4">
+                                <i class="fas fa-info-circle me-2"></i>Hướng Dẫn
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="https://cdn.pixabay.com/photo/2017/08/02/14/26/people-2572976_1280.jpg" 
+                             alt="Tìm bưu cục" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- ====== MAIN CONTENT ====== -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <!-- Cột bên trái: Bộ lọc và bản đồ -->
-                <div class="col-lg-8 mb-4">
-                    <!-- Bộ lọc -->
-                    <div class="filter-card">
-                        <h4 class="fw-bold mb-4"><i class="fas fa-filter text-danger me-2"></i>Tìm Kiếm Bưu Cục</h4>
-                        
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Tỉnh/Thành phố</label>
-                                <select class="form-select form-select-lg" id="cityFilter">
-                                    <option value="all">Tất cả tỉnh thành</option>
-                                    <option value="hcm">TP. Hồ Chí Minh</option>
-                                    <option value="hn">Hà Nội</option>
-                                    <option value="dn">Đà Nẵng</option>
-                                    <option value="hp">Hải Phòng</option>
-                                    <option value="ct">Cần Thơ</option>
-                                    <option value="khac">Các tỉnh khác</option>
-                                </select>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Quận/Huyện</label>
-                                <input type="text" class="form-control form-control-lg" 
-                                       id="districtFilter" 
-                                       placeholder="Nhập tên quận/huyện...">
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Loại bưu cục</label>
-                                <select class="form-select" id="typeFilter">
-                                    <option value="all">Tất cả loại</option>
-                                    <option value="main">Bưu cục chính</option>
-                                    <option value="type1">Bưu cục loại 1</option>
-                                    <option value="agent">Điểm giao dịch</option>
-                                </select>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Dịch vụ có sẵn</label>
-                                <select class="form-select" id="serviceFilter">
-                                    <option value="all">Tất cả dịch vụ</option>
-                                    <option value="international">Gửi hàng quốc tế</option>
-                                    <option value="cod">Thu hộ COD</option>
-                                    <option value="storage">Lưu kho</option>
-                                    <option value="packing">Đóng gói</option>
-                                </select>
+        <!-- Search Section -->
+        <section id="tim-kiem" class="search-section py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow border-0">
+                            <div class="card-body p-4">
+                                <h2 class="h4 fw-bold text-center mb-4">Tìm Kiếm Bưu Cục</h2>
+                                
+                                <form id="searchForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="city" class="form-label">Tỉnh/Thành phố</label>
+                                            <select class="form-select" id="city">
+                                                <option selected>Chọn tỉnh/thành phố</option>
+                                                <option>Hà Nội</option>
+                                                <option>Hồ Chí Minh</option>
+                                                <option>Đà Nẵng</option>
+                                                <option>Hải Phòng</option>
+                                                <option>Cần Thơ</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="district" class="form-label">Quận/Huyện</label>
+                                            <select class="form-select" id="district">
+                                                <option selected>Chọn quận/huyện</option>
+                                                <option>Quận 1</option>
+                                                <option>Quận 3</option>
+                                                <option>Quận Tân Bình</option>
+                                                <option>Quận Bình Thạnh</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="keyword" class="form-label">Từ khóa tìm kiếm</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="keyword" placeholder="Nhập tên đường, phường, hoặc từ khóa...">
+                                                <button class="btn btn-danger" type="submit">
+                                                    <i class="fas fa-search me-1"></i>Tìm
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        
-                        <div class="mt-4 d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="badge bg-danger" id="resultCount">12</span>
-                                <span class="text-muted ms-2">bưu cục được tìm thấy</span>
-                            </div>
-                            <div>
-                                <button class="btn btn-outline-danger me-2" id="resetFilters">
-                                    <i class="fas fa-redo me-1"></i>Đặt lại
-                                </button>
-                                <button class="btn btn-danger" id="searchButton">
-                                    <i class="fas fa-search me-1"></i>Tìm kiếm
-                                </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section py-5 bg-light">
+            <div class="container">
+                <h2 class="h3 fw-bold text-center mb-5">Bưu Cục Gần Đây</h2>
+                
+                <div class="row g-4">
+                    <!-- Bưu cục 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <h5 class="card-title fw-bold">Bưu cục Quận 1</h5>
+                                    <span class="badge bg-danger">Mở cửa</span>
+                                </div>
+                                <p class="card-text">
+                                    <i class="fas fa-map-marker-alt text-danger me-2"></i>
+                                    123 Nguyễn Huệ, Phường Bến Nghé, Quận 1
+                                </p>
+                                <p class="card-text">
+                                    <i class="fas fa-clock text-danger me-2"></i>
+                                    7:30 - 19:00 (Thứ 2 - Thứ 6)<br>
+                                    8:00 - 17:00 (Thứ 7, CN)
+                                </p>
+                                <p class="card-text">
+                                    <i class="fas fa-phone text-danger me-2"></i>
+                                    028 3823 4567
+                                </p>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-outline-danger btn-sm me-2">Xem bản đồ</a>
+                                    <a href="#" class="btn btn-danger btn-sm">Chỉ đường</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Bản đồ -->
-                    <div class="filter-card p-0 overflow-hidden">
-                        <div id="map-container">
-                            <div class="map-placeholder">
-                                <i class="fas fa-map-marked-alt fa-4x mb-3"></i>
-                                <h4>Bản Đồ Hệ Thống Bưu Cục</h4>
-                                <p class="px-4 text-center">Sử dụng bộ lọc để tìm bưu cục và xem vị trí trên bản đồ</p>
-                                <small class="mt-2">Tích hợp Google Maps/Leaflet</small>
-                            </div>
-                        </div>
-                        
-                        <div class="p-3 bg-light">
-                            <div class="row text-center">
-                                <div class="col-4">
-                                    <span class="badge badge-main p-2 me-2">●</span>
-                                    <small>Bưu cục chính</small>
+                    <!-- Bưu cục 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <h5 class="card-title fw-bold">Bưu cục Tân Bình</h5>
+                                    <span class="badge bg-danger">Mở cửa</span>
                                 </div>
-                                <div class="col-4">
-                                    <span class="badge badge-type1 p-2 me-2">●</span>
-                                    <small>Bưu cục loại 1</small>
-                                </div>
-                                <div class="col-4">
-                                    <span class="badge badge-agent p-2 me-2">●</span>
-                                    <small>Điểm giao dịch</small>
+                                <p class="card-text">
+                                    <i class="fas fa-map-marker-alt text-danger me-2"></i>
+                                    456 Hoàng Văn Thụ, Phường 4, Tân Bình
+                                </p>
+                                <p class="card-text">
+                                    <i class="fas fa-clock text-danger me-2"></i>
+                                    7:30 - 19:00 (Thứ 2 - Thứ 6)<br>
+                                    8:00 - 17:00 (Thứ 7)
+                                </p>
+                                <p class="card-text">
+                                    <i class="fas fa-phone text-danger me-2"></i>
+                                    028 3812 3456
+                                </p>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-outline-danger btn-sm me-2">Xem bản đồ</a>
+                                    <a href="#" class="btn btn-danger btn-sm">Chỉ đường</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Hướng dẫn -->
-                    <div class="filter-card mt-4">
-                        <h5 class="fw-bold"><i class="fas fa-info-circle text-danger me-2"></i>Thông tin hữu ích</h5>
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <div class="d-flex mb-3">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-clock text-danger fa-lg"></i>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h6 class="fw-bold">Giờ làm việc</h6>
-                                        <p class="small mb-0">Hầu hết bưu cục mở cửa từ 7:00-20:00 từ Thứ 2 đến Thứ 7</p>
-                                    </div>
+                    <!-- Bưu cục 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <h5 class="card-title fw-bold">Bưu cục Bình Thạnh</h5>
+                                    <span class="badge bg-danger">Mở cửa</span>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex mb-3">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-box text-danger fa-lg"></i>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h6 class="fw-bold">Dịch vụ tại bưu cục</h6>
-                                        <p class="small mb-0">Gửi/nhận hàng, thu hộ COD, đóng gói, lưu kho</p>
-                                    </div>
+                                <p class="card-text">
+                                    <i class="fas fa-map-marker-alt text-danger me-2"></i>
+                                    789 Xô Viết Nghệ Tĩnh, Phường 26, Bình Thạnh
+                                </p>
+                                <p class="card-text">
+                                    <i class="fas fa-clock text-danger me-2"></i>
+                                    7:30 - 19:00 (Thứ 2 - Thứ 7)<br>
+                                    8:00 - 16:00 (Chủ nhật)
+                                </p>
+                                <p class="card-text">
+                                    <i class="fas fa-phone text-danger me-2"></i>
+                                    028 3510 7890
+                                </p>
+                                <div class="mt-3">
+                                    <a href="#" class="btn btn-outline-danger btn-sm me-2">Xem bản đồ</a>
+                                    <a href="#" class="btn btn-danger btn-sm">Chỉ đường</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Cột bên phải: Danh sách bưu cục -->
-                <div class="col-lg-4">
-                    <div class="filter-card h-100">
-                        <h4 class="fw-bold mb-4">
-                            <i class="fas fa-list-ul text-danger me-2"></i>
-                            Danh Sách Bưu Cục
-                            <small class="text-muted d-block fw-normal mt-1">Click để xem chi tiết</small>
-                        </h4>
-                        
-                        <div class="location-list" style="max-height: 600px; overflow-y: auto;">
-                            <!-- Bưu cục 1 -->
-                            <div class="location-item active" data-city="hcm" data-type="main">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Bưu Cục Chính Hồ Chí Minh</h6>
-                                        <p class="small text-muted mb-1">
-                                            <i class="fas fa-map-marker-alt me-1"></i>
-                                            230 Võ Văn Kiệt, P.Cầu Ông Lãnh, Q.1
-                                        </p>
-                                    </div>
-                                    <span class="badge badge-main badge-custom">Chính</span>
-                                </div>
-                                <div class="mt-2">
-                                    <p class="small mb-1">
-                                        <i class="fas fa-phone me-1"></i> (028) 3821 1234
-                                    </p>
-                                    <p class="small mb-1">
-                                        <i class="fas fa-clock me-1"></i> 7:00-21:00 (T2-CN)
-                                    </p>
-                                    <p class="small mb-0">
-                                        <i class="fas fa-tags me-1"></i> Quốc tế, COD, Kho
-                                    </p>
-                                </div>
+                <div class="text-center mt-5">
+                    <a href="#" class="btn btn-outline-danger px-4">Xem thêm bưu cục</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="huong-dan" class="guide-section py-5">
+            <div class="container">
+                <h2 class="h3 fw-bold text-center mb-5">Hướng Dẫn Sử Dụng</h2>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="text-center p-4">
+                            <div class="icon-wrapper bg-danger rounded-circle p-3 d-inline-flex mb-3">
+                                <i class="fas fa-search text-white fa-2x"></i>
                             </div>
-                            
-                            <!-- Bưu cục 2 -->
-                            <div class="location-item" data-city="hcm" data-type="type1">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Bưu Cục Quận 3</h6>
-                                        <p class="small text-muted mb-1">
-                                            <i class="fas fa-map-marker-alt me-1"></i>
-                                            45 Võ Thị Sáu, P.6, Q.3
-                                        </p>
-                                    </div>
-                                    <span class="badge badge-type1 badge-custom">Loại 1</span>
-                                </div>
-                                <div class="mt-2">
-                                    <p class="small mb-1">
-                                        <i class="fas fa-phone me-1"></i> (028) 3829 5678
-                                    </p>
-                                    <p class="small mb-1">
-                                        <i class="fas fa-clock me-1"></i> 7:30-20:30 (T2-T7)
-                                    </p>
-                                    <p class="small mb-0">
-                                        <i class="fas fa-tags me-1"></i> COD, Đóng gói
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Bưu cục 3 (thêm nhiều bưu cục khác tương tự) -->
-                            <div class="location-item" data-city="hn" data-type="main">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Bưu Cục Chính Hà Nội</h6>
-                                        <p class="small text-muted mb-1">
-                                            <i class="fas fa-map-marker-alt me-1"></i>
-                                            Tầng 12, Tòa Vinaconex, 34 Láng Hạ, Q.Đống Đa
-                                        </p>
-                                    </div>
-                                    <span class="badge badge-main badge-custom">Chính</span>
-                                </div>
-                                <div class="mt-2">
-                                    <p class="small mb-1">
-                                        <i class="fas fa-phone me-1"></i> (024) 3776 8899
-                                    </p>
-                                    <p class="small mb-1">
-                                        <i class="fas fa-clock me-1"></i> 7:00-21:00 (T2-CN)
-                                    </p>
-                                    <p class="small mb-0">
-                                        <i class="fas fa-tags me-1"></i> Quốc tế, COD, Kho
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Thêm các bưu cục khác ở đây... -->
-                            <div class="location-item" data-city="dn" data-type="type1">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Bưu Cục Đà Nẵng</h6>
-                                        <p class="small text-muted mb-1">
-                                            <i class="fas fa-map-marker-alt me-1"></i>
-                                            123 Nguyễn Văn Linh, Q.Hải Châu
-                                        </p>
-                                    </div>
-                                    <span class="badge badge-type1 badge-custom">Loại 1</span>
-                                </div>
-                                <div class="mt-2">
-                                    <p class="small mb-1">
-                                        <i class="fas fa-phone me-1"></i> (0236) 3821 777
-                                    </p>
-                                    <p class="small mb-1">
-                                        <i class="fas fa-clock me-1"></i> 7:00-20:00 (T2-T7)
-                                    </p>
-                                    <p class="small mb-0">
-                                        <i class="fas fa-tags me-1"></i> COD, Đóng gói
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="location-item" data-city="hcm" data-type="agent">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="fw-bold mb-1">Điểm Giao Dịch Quận 7</h6>
-                                        <p class="small text-muted mb-1">
-                                            <i class="fas fa-map-marker-alt me-1"></i>
-                                            Lô A1.1, Đường số 10, Nam Sài Gòn
-                                        </p>
-                                    </div>
-                                    <span class="badge badge-agent badge-custom">Giao dịch</span>
-                                </div>
-                                <div class="mt-2">
-                                    <p class="small mb-1">
-                                        <i class="fas fa-phone me-1"></i> (028) 5412 3456
-                                    </p>
-                                    <p class="small mb-1">
-                                        <i class="fas fa-clock me-1"></i> 8:00-20:00 (T2-T7)
-                                    </p>
-                                    <p class="small mb-0">
-                                        <i class="fas fa-tags me-1"></i> Gửi/Nhận hàng
-                                    </p>
-                                </div>
-                            </div>
+                            <h4 class="h5 fw-bold">1. Tìm Kiếm</h4>
+                            <p>Chọn tỉnh/thành phố, quận/huyện hoặc nhập từ khóa để tìm bưu cục gần bạn nhất.</p>
                         </div>
-                        
-                        <div class="mt-4">
-                            <div class="d-grid">
-                                <button class="btn btn-danger" id="callCenterBtn">
-                                    <i class="fas fa-headset me-2"></i>Gọi Tổng Đài 1900 6980
-                                </button>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="text-center p-4">
+                            <div class="icon-wrapper bg-danger rounded-circle p-3 d-inline-flex mb-3">
+                                <i class="fas fa-map-marked-alt text-white fa-2x"></i>
                             </div>
-                            <p class="small text-muted mt-3 mb-0">
-                                <i class="fas fa-exclamation-circle me-1"></i>
-                                Không tìm thấy bưu cục phù hợp? Liên hệ tổng đài để được hỗ trợ.
-                            </p>
+                            <h4 class="h5 fw-bold">2. Xem Thông Tin</h4>
+                            <p>Kiểm tra địa chỉ, giờ làm việc, số điện thoại và dịch vụ có tại bưu cục.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="text-center p-4">
+                            <div class="icon-wrapper bg-danger rounded-circle p-3 d-inline-flex mb-3">
+                                <i class="fas fa-directions text-white fa-2x"></i>
+                            </div>
+                            <h4 class="h5 fw-bold">3. Chỉ Đường</h4>
+                            <p>Sử dụng tính năng chỉ đường để được dẫn trực tiếp đến bưu cục bạn chọn.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- ====== FOOTER (Giống trang chủ) ====== -->
-    <footer class="pt-5">
+    <!-- FOOTER -->
+    <footer class="footer bg-dark text-white pt-5 pb-4">
         <div class="container">
             <div class="row">
+                <!-- Company Info -->
                 <div class="col-lg-4 mb-4">
-                    <h4 class="mb-4">
-                        <i class="fas fa-shipping-fast me-2"></i>VUTEK EXPRESS
+                    <h4 class="fw-bold mb-3">
+                        <i class="fas fa-shipping-fast me-2"></i>EXPRESS
                     </h4>
-                    <p>Đơn vị chuyển phát nhanh uy tín hàng đầu, cam kết mang đến dịch vụ tốt nhất.</p>
+                    <p class="mb-3">Dịch vụ chuyển phát nhanh hàng đầu Việt Nam, cam kết mang đến trải nghiệm tốt nhất cho khách hàng.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 
+                <!-- Quick Links -->
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="mb-4">Dịch Vụ</h5>
-                    <a href="dich-vu.html" class="d-block text-decoration-none text-light mb-2">Chuyển phát nội thành</a>
-                    <a href="dich-vu.html" class="d-block text-decoration-none text-light mb-2">Chuyển phát liên tỉnh</a>
-                    <a href="dich-vu.html" class="d-block text-decoration-none text-light mb-2">Chuyển phát quốc tế</a>
+                    <h5 class="fw-bold mb-3">Liên Kết Nhanh</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="tim-buu-cuc.html" class="text-white-50 text-decoration-none">Tìm bưu cục</a></li>
+                        <li class="mb-2"><a href="dich-vu.html" class="text-white-50 text-decoration-none">Dịch vụ</a></li>
+                        <li class="mb-2"><a href="tuwendung.html" class="text-white-50 text-decoration-none">Tuyển dụng</a></li>
+                    </ul>
                 </div>
                 
-                <div class="col-lg-2 col-md-6 mb-4">
-                    <h5 class="mb-4">Hỗ Trợ</h5>
-                    <a href="tim-buu-cuc.html" class="d-block text-decoration-none text-light mb-2">Tìm bưu cục</a>
-                    <a href="#" class="d-block text-decoration-none text-light mb-2">Bảng giá</a>
-                    <a href="#" class="d-block text-decoration-none text-light mb-2">Tra cứu vận đơn</a>
+                <!-- Support -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Hỗ Trợ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Câu hỏi thường gặp</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Hướng dẫn sử dụng</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Chính sách bảo mật</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Điều khoản dịch vụ</a></li>
+                    </ul>
                 </div>
                 
-                <div class="col-lg-4 mb-4">
-                    <h5 class="mb-4">Liên Hệ</h5>
-                    <p class="mb-2"><i class="fas fa-phone me-2"></i> 0123.456.789</p>
-                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@vutekexpress.vn</p>
-                    <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> 123 Đường ABC, Hà Nội</p>
+                <!-- Contact -->
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Liên Hệ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            123 Nguyễn Văn Linh, Quận 7, TP.HCM
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            1900 6980
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            hotro@express.vn
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock me-2"></i>
+                            8:00 - 20:00 (Thứ 2 - Chủ nhật)
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <hr class="bg-light">
+            <hr class="bg-secondary">
             
-            <div class="row py-3">
-                <div class="col-md-6">
-                    <p class="mb-0">© 2023 VUTEK EXPRESS. All rights reserved.</p>
+            <div class="row pt-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2024 EXPRESS. Tất cả các quyền được bảo lưu.</p>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="text-light text-decoration-none me-3">Chính sách bảo mật</a>
-                    <a href="#" class="text-light text-decoration-none">Điều khoản sử dụng</a>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Được phát triển bởi <a href="vechungtoi.html" class="text-danger text-decoration-none">EXPRESS Team</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ====== SCRIPTS ====== -->
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- JavaScript cho trang tìm bưu cục -->
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Các phần tử DOM
-            const cityFilter = document.getElementById('cityFilter');
-            const districtFilter = document.getElementById('districtFilter');
-            const typeFilter = document.getElementById('typeFilter');
-            const serviceFilter = document.getElementById('serviceFilter');
-            const searchButton = document.getElementById('searchButton');
-            const resetFilters = document.getElementById('resetFilters');
-            const locationItems = document.querySelectorAll('.location-item');
-            const resultCount = document.getElementById('resultCount');
-            const callCenterBtn = document.getElementById('callCenterBtn');
-            
-            // Hàm lọc bưu cục
-            function filterLocations() {
-                const city = cityFilter.value;
-                const district = districtFilter.value.toLowerCase();
-                const type = typeFilter.value;
-                let visibleCount = 0;
-                
-                locationItems.forEach(item => {
-                    const itemCity = item.getAttribute('data-city');
-                    const itemType = item.getAttribute('data-type');
-                    const itemText = item.textContent.toLowerCase();
-                    
-                    // Kiểm tra điều kiện
-                    const cityMatch = city === 'all' || itemCity === city;
-                    const districtMatch = district === '' || itemText.includes(district);
-                    const typeMatch = type === 'all' || itemType === type;
-                    
-                    if (cityMatch && districtMatch && typeMatch) {
-                        item.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                
-                // Cập nhật số lượng
-                resultCount.textContent = visibleCount;
-                
-                // Active item đầu tiên
-                const visibleItems = Array.from(locationItems).filter(item => item.style.display !== 'none');
-                locationItems.forEach(item => item.classList.remove('active'));
-                if (visibleItems.length > 0) {
-                    visibleItems[0].classList.add('active');
-                }
-            }
-            
-            // Sự kiện tìm kiếm
-            searchButton.addEventListener('click', filterLocations);
-            
-            // Tìm kiếm khi nhấn Enter ở ô quận/huyện
-            districtFilter.addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    filterLocations();
-                }
-            });
-            
-            // Reset bộ lọc
-            resetFilters.addEventListener('click', function() {
-                cityFilter.value = 'all';
-                districtFilter.value = '';
-                typeFilter.value = 'all';
-                serviceFilter.value = 'all';
-                filterLocations();
-            });
-            
-            // Click vào bưu cục
-            locationItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    locationItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Hiển thị thông tin chi tiết (có thể mở modal hoặc hiển thị trên bản đồ)
-                    const locationName = this.querySelector('h6').textContent;
-                    console.log('Đã chọn bưu cục:', locationName);
-                    
-                    // Ở đây có thể thêm code để hiển thị marker trên bản đồ
-                    // hoặc hiển thị thông tin chi tiết trong một panel
-                });
-            });
-            
-            // Nút gọi tổng đài
-            callCenterBtn.addEventListener('click', function() {
-                if (confirm('Bạn có muốn gọi đến tổng đài 1900 6980?')) {
-                    // Trên mobile sẽ tự động gọi
-                    window.location.href = 'tel:19006980';
-                }
-            });
-            
-            // Khởi tạo
-            filterLocations();
-            
-            // Log tích hợp bản đồ
-            console.log('=== HƯỚNG DẪN TÍCH HỢP BẢN ĐỒ THỰC ===');
-            console.log('1. Đăng ký Google Maps API Key tại: https://console.cloud.google.com/');
-            console.log('2. Thêm thẻ script sau vào <head>:');
-            console.log('<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"><\/script>');
-            console.log('3. Thay thế div.map-placeholder bằng bản đồ thực');
+        // Xử lý form tìm kiếm
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Tính năng tìm kiếm đang được phát triển!');
         });
     </script>
 </body>
