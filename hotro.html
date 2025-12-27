@@ -1,1 +1,670 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ Trợ - 24/7 Express</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #e30613;
+            --secondary-color: #333;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding-top: 80px;
+            background-color: #f8f9fa;
+        }
+        
+        /* Header */
+        .navbar {
+            background: white !important;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            padding: 8px 15px !important;
+            margin: 0 2px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+            background: rgba(227, 6, 19, 0.05);
+        }
+        
+        /* Hero Section */
+        .support-hero {
+            background: linear-gradient(135deg, #e30613 0%, #b3000d 100%);
+            color: white;
+            padding: 60px 0 40px;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        /* FAQ Categories */
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .category-card.service { border-left-color: #e30613; }
+        .category-card.network { border-left-color: #007bff; }
+        .category-card.pricing { border-left-color: #28a745; }
+        .category-card.shipping { border-left-color: #ffc107; }
+        
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* FAQ Items */
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-question.collapsed .fa-chevron-down {
+            transform: rotate(0deg);
+        }
+        
+        .faq-question:not(.collapsed) .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        .fa-chevron-down {
+            transition: transform 0.3s;
+            color: var(--primary-color);
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            border-top: 1px solid #eee;
+            background-color: #f8f9fa;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .top-question {
+            border-left: 4px solid var(--primary-color);
+            background-color: rgba(227, 6, 19, 0.05);
+        }
+        
+        /* Contact Box */
+        .contact-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 2px dashed #ddd;
+        }
+        
+        /* Quick Links */
+        .quick-link {
+            display: block;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #333;
+            border-left: 3px solid #ddd;
+            transition: all 0.3s;
+        }
+        
+        .quick-link:hover {
+            border-left-color: var(--primary-color);
+            background-color: rgba(227, 6, 19, 0.05);
+            transform: translateX(5px);
+            color: var(--primary-color);
+        }
+        
+        /* Search */
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .faq-question {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER / NAVIGATION ===== -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-bolt me-2"></i>24/7 EXPRESS
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tim-buu-cuc.html">Tìm bưu cục</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="ho-tro.html">Hỗ trợ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dich-vu.html">Dịch Vụ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tin-24-7.html">Tin 24/7</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tuyen-dung.html">Tuyển dụng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ve-chung-toi.html">Về chúng tôi</a></li>
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-danger" href="tel:19006980">
+                            <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- ===== HERO SECTION ===== -->
+    <section class="support-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="page-title">HỖ TRỢ</h1>
+                    <p class="lead mb-0">Trang chủ • Hỗ trợ</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                    <div class="d-inline-block bg-white text-dark rounded-pill px-4 py-2">
+                        <i class="fas fa-headset text-danger me-2"></i>
+                        <strong>Hotline:</strong> 1900 6980
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+        <div class="row">
+            <!-- Left Column: FAQ Categories -->
+            <div class="col-lg-8">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="Tìm kiếm câu hỏi...">
+                        <button class="btn btn-danger" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Top Questions -->
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-4">
+                        <i class="fas fa-star text-danger me-2"></i>Top 10 Câu Hỏi Thường Gặp
+                    </h2>
+                    
+                    <!-- FAQ 1 -->
+                    <div class="faq-item top-question">
+                        <button class="faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Tôi muốn sử dụng dịch vụ chuyển phát nhanh của Công ty Cổ phần Hai Bảy. Tôi phải làm thế nào?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="collapse show" id="faq1">
+                            <div class="faq-answer">
+                                <p>Quý khách liên hệ hotline 1900 6980 của 24/7 Express để được nhân viên tư vấn trực tiếp hoặc liên hệ với công ty của bạn để tìm hiểu thêm thông tin.</p>
+                                <p><strong>Các bước sử dụng dịch vụ:</strong></p>
+                                <ol>
+                                    <li>Gọi hotline 1900 6980 hoặc đến bưu cục gần nhất</li>
+                                    <li>Cung cấp thông tin hàng hóa, địa chỉ gửi/nhận</li>
+                                    <li>Nhận báo giá và thời gian giao hàng dự kiến</li>
+                                    <li>Đóng gói và giao hàng cho nhân viên thu gom</li>
+                                    <li>Theo dõi đơn hàng qua website hoặc ứng dụng</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 2 -->
+                    <div class="faq-item top-question">
+                        <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Mạng lưới của 24/7Express có mặt ở những tỉnh thành nào?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="collapse" id="faq2">
+                            <div class="faq-answer">
+                                <p>24/7 Express hiện có mặt tại 63 tỉnh thành trên toàn quốc với hơn 200 bưu cục và điểm giao dịch.</p>
+                                <p><strong>Khu vực phủ sóng:</strong></p>
+                                <ul>
+                                    <li><strong>Miền Bắc:</strong> Hà Nội, Hải Phòng, Quảng Ninh, Hải Dương, và 21 tỉnh thành khác</li>
+                                    <li><strong>Miền Trung:</strong> Đà Nẵng, Huế, Nha Trang, Quy Nhơn, và 14 tỉnh thành khác</li>
+                                    <li><strong>Miền Nam:</strong> TP.HCM, Cần Thơ, Đồng Nai, Bình Dương, và 24 tỉnh thành khác</li>
+                                </ul>
+                                <p>Sử dụng tính năng <a href="tim-buu-cuc.html" class="text-danger">"Tìm bưu cục"</a> để tìm điểm giao dịch gần bạn nhất.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 3 -->
+                    <div class="faq-item top-question">
+                        <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Tôi muốn biết về Giá cước, thời gian chuyển thư/hàng cũng như các vấn đề khác về dịch vụ của 24/7Express. Tôi phải liên hệ với ai?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="collapse" id="faq3">
+                            <div class="faq-answer">
+                                <p>Để biết thông tin chi tiết về giá cước, thời gian vận chuyển và các thông tin dịch vụ khác, quý khách có thể:</p>
+                                <ul>
+                                    <li><strong>Hotline:</strong> Gọi 1900 6980 (miễn phí) để được tư vấn 24/7</li>
+                                    <li><strong>Email:</strong> Gửi yêu cầu đến info@247express.vn</li>
+                                    <li><strong>Website:</strong> Truy cập mục <a href="dich-vu.html" class="text-danger">"Dịch vụ"</a> để xem bảng giá chi tiết</li>
+                                    <li><strong>Bưu cục:</strong> Đến trực tiếp bưu cục gần nhất để được hỗ trợ</li>
+                                </ul>
+                                <p>Thời gian chuyển phát tham khảo:</p>
+                                <ul>
+                                    <li>Nội thành: 2-4 giờ</li>
+                                    <li>Liên tỉnh gần: 24 giờ</li>
+                                    <li>Liên tỉnh xa: 48-72 giờ</li>
+                                    <li>Quốc tế: 3-7 ngày tùy nước</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 4 -->
+                    <div class="faq-item top-question">
+                        <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Tôi muốn được tư vấn trực tuyến các thông tin về việc sử dụng dịch vụ 24/7Express với một số yêu cầu đặc thù.
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="collapse" id="faq4">
+                            <div class="faq-answer">
+                                <p>Đối với các yêu cầu đặc thù (hàng hóa đặc biệt, số lượng lớn, dịch vụ custom), quý khách vui lòng:</p>
+                                <ol>
+                                    <li><strong>Gọi hotline 1900 6980</strong> để được kết nối với bộ phận tư vấn doanh nghiệp</li>
+                                    <li><strong>Gửi email chi tiết</strong> đến sales@247express.vn với thông tin:
+                                        <ul>
+                                            <li>Loại hàng hóa, kích thước, trọng lượng</li>
+                                            <li>Số lượng và tần suất gửi</li>
+                                            <li>Yêu cầu đặc biệt (đóng gói, bảo hiểm, thời gian...)</li>
+                                            <li>Thông tin liên hệ của quý khách</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Đặt lịch hẹn</strong> với nhân viên kinh doanh để được tư vấn trực tiếp tại văn phòng</li>
+                                </ol>
+                                <p>Bộ phận tư vấn sẽ liên hệ lại trong vòng 24 giờ làm việc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 5 -->
+                    <div class="faq-item top-question">
+                        <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Bảng giá công bố của 24/7Express trên trang web có áp dụng cho việc gửi tất cả các loại hàng hóa không?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="collapse" id="faq5">
+                            <div class="faq-answer">
+                                <p>Bảng giá công bố trên website áp dụng cho các loại hàng hóa thông thường. Một số loại hàng đặc biệt có thể có mức giá khác:</p>
+                                
+                                <p><strong>Hàng hóa áp dụng giá chuẩn:</strong></p>
+                                <ul>
+                                    <li>Tài liệu, văn phòng phẩm</li>
+                                    <li>Quần áo, giày dép</li>
+                                    <li>Đồ điện tử nhỏ (điện thoại, máy tính bảng)</li>
+                                    <li>Mỹ phẩm, thực phẩm khô</li>
+                                </ul>
+                                
+                                <p><strong>Hàng hóa cần báo giá riêng:</strong></p>
+                                <ul>
+                                    <li>Hàng dễ vỡ (gốm sứ, thủy tinh)</li>
+                                    <li>Hàng có giá trị cao (trên 10 triệu VNĐ)</li>
+                                    <li>Hàng cồng kềnh (kích thước lớn)</li>
+                                    <li>Hàng hóa yêu cầu điều kiện bảo quản đặc biệt</li>
+                                    <li>Hàng nguy hiểm, chất lỏng (cần có giấy phép)</li>
+                                </ul>
+                                
+                                <p>Vui lòng liên hệ hotline để được báo giá chính xác cho hàng hóa đặc biệt.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 6 -->
+                    <div class="faq-item top-question">
+                        <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            Tôi không biết về cách áp dụng trọng lượng để tính cước của 24/7Express. Vui lòng giải thích giúp tôi.
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="collapse" id="faq6">
+                            <div class="faq-answer">
+                                <p>Cách tính cước dựa trên <strong>trọng lượng quy đổi</strong> (Chargeable Weight) - lấy giá trị lớn hơn giữa trọng lượng thực tế và trọng lượng thể tích.</p>
+                                
+                                <p><strong>Công thức tính trọng lượng thể tích:</strong></p>
+                                <div class="bg-light p-3 rounded mb-3">
+                                    <strong>Trọng lượng thể tích (kg) = (Dài x Rộng x Cao) / 5000</strong>
+                                    <p class="mb-0 small text-muted">(Kích thước tính bằng cm)</p>
+                                </div>
+                                
+                                <p><strong>Ví dụ:</strong></p>
+                                <ul>
+                                    <li>Thùng hàng: 40cm x 30cm x 20cm = 24,000 cm³</li>
+                                    <li>Trọng lượng thể tích: 24,000 / 5,000 = 4.8 kg</li>
+                                    <li>Trọng lượng thực tế: 3.5 kg</li>
+                                    <li><strong>Trọng lượng tính cước:</strong> 4.8 kg (vì lớn hơn 3.5 kg)</li>
+                                </ul>
+                                
+                                <p><strong>Lưu ý:</strong></p>
+                                <ul>
+                                    <li>Làm tròn lên đến 0.5 kg</li>
+                                    <li>Hàng nhẹ cồng kềnh thường tính theo thể tích</li>
+                                    <li>Hàng nặng nhỏ gọn tính theo trọng lượng thực</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 7 -->
+                    <div class="faq-item top-question">
+                        <button class="faq-question collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                            Tại sao thời gian phát thư và hàng lại khác nhau? Tại sao gửi cho cùng 1 địa chỉ nhưng lại nhận được thư trước, nhận được hàng sau?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="collapse" id="faq7">
+                            <div class="faq-answer">
+                                <p>Thời gian phát thư và hàng khác nhau do đặc tính và quy trình xử lý khác nhau:</p>
+                                
+                                <p><strong>Thư/ tài liệu:</strong></p>
+                                <ul>
+                                    <li>Kích thước nhỏ, nhẹ</li>
+                                    <li>Dễ phân loại tự động</li>
+                                    <li>Vận chuyển bằng xe máy là chính</li>
+                                    <li>Ưu tiên xử lý nhanh</li>
+                                    <li><strong>Thời gian: Thường nhanh hơn 2-4 giờ so với hàng hóa</strong></li>
+                                </ul>
+                                
+                                <p><strong>Hàng hóa:</strong></p>
+                                <ul>
+                                    <li>Cần kiểm tra an ninh, cân đo</li>
+                                    <li>Đóng gói chuyên nghiệp</li>
+                                    <li>Vận chuyển bằng ô tô</li>
+                                    <li>Có thể cần chờ đủ chuyến hàng</li>
+                                    <li>Phân phối theo tuyến xe tải</li>
+                                </ul>
+                                
+                                <p><strong>Lý do cùng địa chỉ nhưng nhận thư trước, hàng sau:</strong></p>
+                                <ol>
+                                    <li>Thư được giao bằng xe máy linh hoạt</li>
+                                    <li>Hàng hóa chờ đủ chuyến xe tải mới giao</li>
+                                    <li>Hàng hóa có thể cần kiểm tra hải quan (nếu quốc tế)</li>
+                                    <li>Khác bộ phận xử lý và đội ngũ giao nhận</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Categories and Quick Links -->
+            <div class="col-lg-4">
+                <!-- Categories -->
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-4">Danh mục câu hỏi</h3>
+                    
+                    <div class="category-card service">
+                        <div class="category-icon text-danger">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h5 class="fw-bold">Dịch Vụ</h5>
+                        <p class="text-muted small">Câu hỏi về các loại dịch vụ, cách đăng ký, hủy dịch vụ</p>
+                        <a href="#" class="btn btn-sm btn-outline-danger">Xem 15 câu hỏi</a>
+                    </div>
+                    
+                    <div class="category-card network">
+                        <div class="category-icon text-primary">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h5 class="fw-bold">Mạng Lưới</h5>
+                        <p class="text-muted small">Về bưu cục, điểm giao dịch, phạm vi phục vụ</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Xem 8 câu hỏi</a>
+                    </div>
+                    
+                    <div class="category-card pricing">
+                        <div class="category-icon text-success">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h5 class="fw-bold">Giá Cước</h5>
+                        <p class="text-muted small">Cách tính giá, khuyến mãi, thanh toán</p>
+                        <a href="#" class="btn btn-sm btn-outline-success">Xem 12 câu hỏi</a>
+                    </div>
+                    
+                    <div class="category-card shipping">
+                        <div class="category-icon text-warning">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h5 class="fw-bold">Vận Chuyển</h5>
+                        <p class="text-muted small">Đóng gói, thời gian giao, theo dõi đơn hàng</p>
+                        <a href="#" class="btn btn-sm btn-outline-warning">Xem 20 câu hỏi</a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="mb-5">
+                    <h4 class="fw-bold mb-4">Liên kết nhanh</h4>
+                    
+                    <a href="tim-buu-cuc.html" class="quick-link">
+                        <i class="fas fa-map-marker-alt me-2 text-danger"></i>
+                        Tìm bưu cục gần nhất
+                    </a>
+                    
+                    <a href="dich-vu.html" class="quick-link">
+                        <i class="fas fa-file-invoice-dollar me-2 text-danger"></i>
+                        Bảng giá dịch vụ
+                    </a>
+                    
+                    <a href="index.html#tracking" class="quick-link">
+                        <i class="fas fa-search-location me-2 text-danger"></i>
+                        Tra cứu vận đơn
+                    </a>
+                    
+                    <a href="tin-24-7.html" class="quick-link">
+                        <i class="fas fa-newspaper me-2 text-danger"></i>
+                        Thông báo dịch vụ
+                    </a>
+                </div>
+                
+                <!-- Contact Box -->
+                <div class="contact-box">
+                    <h4 class="fw-bold mb-3">
+                        <i class="fas fa-headset me-2 text-danger"></i>
+                        Cần hỗ trợ thêm?
+                    </h4>
+                    <p class="mb-4">Nếu không tìm thấy câu trả lời trong danh sách trên, vui lòng liên hệ trực tiếp với chúng tôi.</p>
+                    
+                    <div class="d-grid gap-2">
+                        <a href="tel:19006980" class="btn btn-danger btn-lg">
+                            <i class="fas fa-phone-alt me-2"></i>Gọi 1900 6980
+                        </a>
+                        
+                        <a href="mailto:support@247express.vn" class="btn btn-outline-danger">
+                            <i class="fas fa-envelope me-2"></i>Gửi Email
+                        </a>
+                        
+                        <a href="#" class="btn btn-outline-secondary">
+                            <i class="fab fa-facebook-messenger me-2"></i>Chat Facebook
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4 pt-3 border-top">
+                        <p class="small text-muted mb-0">
+                            <i class="fas fa-clock me-1"></i>
+                            Thời gian hỗ trợ: 24/7 cả tuần
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="pt-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="fw-bold mb-4">
+                        <i class="fas fa-bolt me-2"></i>24/7 EXPRESS
+                    </h4>
+                    <p>Chuyển phát nhanh 24/7 - Luôn sẵn sàng phục vụ mọi lúc, mọi nơi.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-4">Liên Kết Nhanh</h5>
+                    <a href="index.html" class="d-block text-decoration-none text-dark mb-2">Trang chủ</a>
+                    <a href="tim-buu-cuc.html" class="d-block text-decoration-none text-dark mb-2">Tìm bưu cục</a>
+                    <a href="dich-vu.html" class="d-block text-decoration-none text-dark mb-2">Dịch vụ</a>
+                    <a href="tin-24-7.html" class="d-block text-decoration-none text-dark mb-2">Tin 24/7</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-4">Hỗ Trợ</h5>
+                    <a href="ho-tro.html" class="d-block text-decoration-none text-dark mb-2">Câu hỏi thường gặp</a>
+                    <a href="ho-tro.html" class="d-block text-decoration-none text-dark mb-2">Chính sách vận chuyển</a>
+                    <a href="ho-tro.html" class="d-block text-decoration-none text-dark mb-2">Bảo mật thông tin</a>
+                    <a href="ho-tro.html" class="d-block text-decoration-none text-dark mb-2">Khiếu nại</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-4">Liên Hệ</h5>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> 1900 6980</p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@247express.vn</p>
+                    <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> 230 Võ Văn Kiệt, Q.1, TP.HCM</p>
+                </div>
+            </div>
+            
+            <hr class="bg-dark">
+            
+            <div class="row py-4">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2023 24/7 Express. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-dark text-decoration-none me-3">Chính sách bảo mật</a>
+                    <a href="#" class="text-dark text-decoration-none">Điều khoản sử dụng</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // FAQ Search Functionality
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-box input').value.toLowerCase();
+            if (searchTerm.trim() === '') {
+                alert('Vui lòng nhập từ khóa tìm kiếm');
+                return;
+            }
+            
+            const faqItems = document.querySelectorAll('.faq-item');
+            let found = false;
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                if (question.includes(searchTerm)) {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    item.style.backgroundColor = '#fff3cd';
+                    setTimeout(() => {
+                        item.style.backgroundColor = '';
+                    }, 3000);
+                    found = true;
+                    
+                    // Expand the FAQ item
+                    const button = item.querySelector('.faq-question');
+                    if (button.classList.contains('collapsed')) {
+                        button.click();
+                    }
+                }
+            });
+            
+            if (!found) {
+                alert('Không tìm thấy câu hỏi phù hợp với từ khóa: "' + searchTerm + '"');
+            }
+        });
+        
+        // Enter key to search
+        document.querySelector('.search-box input').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-box button').click();
+            }
+        });
+        
+        // Auto-expand first FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstFaq = document.querySelector('.faq-item:first-child .faq-question');
+            if (firstFaq) {
+                firstFaq.click();
+            }
+        });
+        
+        console.log('Trang Hỗ trợ đã sẵn sàng!');
+    </script>
+</body>
+</html>
