@@ -3,685 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch Vụ - 24/7 Express</title>
+    <title>Dịch Vụ - Chuyển Phát Nhanh 24/7</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="style.css">
+    
     <style>
-        :root {
-            --primary-color: #e30613;
-            --secondary-color: #333;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            padding-top: 80px;
-            background-color: #f8f9fa;
-        }
-        
-        /* Header */
-        .navbar {
-            background: white !important;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            padding: 15px 0;
-        }
-        
-        .navbar-brand {
-            color: var(--primary-color) !important;
-            font-weight: 800;
-            font-size: 1.8rem;
-        }
-        
-        .nav-link {
-            color: var(--secondary-color) !important;
-            font-weight: 500;
-            padding: 8px 15px !important;
-            margin: 0 2px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-color) !important;
-            background: rgba(227, 6, 19, 0.05);
-        }
-        
-        /* Hero Section */
-        .service-hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 0 40px;
-            margin-bottom: 40px;
-        }
-        
-        .breadcrumb {
-            background: transparent;
-            padding: 0;
-        }
-        
-        .breadcrumb-item a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-        }
-        
-        .breadcrumb-item.active {
-            color: white;
-        }
-        
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 15px 0;
-        }
-        
-        /* Service Cards */
         .service-card {
-            background: white;
-            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            height: 100%;
-            margin-bottom: 30px;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .service-card.featured {
-            border: 3px solid var(--primary-color);
-        }
-        
-        .service-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-        
-        .service-content {
-            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
         }
         
         .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .service-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary-color);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        /* Features */
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .feature-icon {
-            flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            background: rgba(227, 6, 19, 0.1);
-            border-radius: 10px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            color: var(--primary-color);
-            font-size: 1.2rem;
+            margin: 0 auto 20px;
         }
         
-        /* Pricing Table */
-        .pricing-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: all 0.3s;
-            height: 100%;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .pricing-card.featured {
-            border: 2px solid var(--primary-color);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pricing-badge {
+        .price-badge {
             position: absolute;
-            top: 0;
-            right: 0;
-            background: var(--primary-color);
+            top: 15px;
+            right: 15px;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #dc3545;
             color: white;
-            padding: 5px 20px;
-            font-size: 0.8rem;
-            transform: rotate(45deg) translate(30px, -10px);
-            width: 150px;
-            text-align: center;
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 20px 0;
-        }
-        
-        /* Stats Section */
-        .stats-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #b3000d 100%);
-            color: white;
-            padding: 70px 0;
-            border-radius: 20px;
-            margin: 60px 0;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 0;
-            border-radius: 20px;
-            text-align: center;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .service-card {
-                margin-bottom: 20px;
-            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
         }
     </style>
 </head>
 <body>
-    <!-- ===== HEADER / NAVIGATION ===== -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-bolt me-2"></i>24/7 EXPRESS
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tim-buu-cuc.html">Tìm bưu cục</a></li>
-                    <li class="nav-item"><a class="nav-link" href="ho-tro.html">Hỗ trợ</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="dich-vu.html">Dịch Vụ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tin-24-7.html">Tin 24/7</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tuyen-dung.html">Tuyển dụng</a></li>
-                    <li class="nav-item"><a class="nav-link" href="ve-chung-toi.html">Về chúng tôi</a></li>
-                    <li class="nav-item ms-3">
-                        <a class="btn btn-danger" href="tel:19006980">
-                            <i class="fas fa-phone-alt me-1"></i> 1900 6980
+    <!-- HEADER & NAVIGATION -->
+    <header class="header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold text-danger fs-3" href="index.html">
+                    <i class="fas fa-shipping-fast me-2"></i>EXPRESS
+                </a>
+                
+                <!-- Hotline -->
+                <a class="btn btn-outline-danger d-lg-none ms-auto me-3" href="tel:19086980">
+                    <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                </a>
+                
+                <!-- Navbar Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Navbar Menu -->
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tim-buu-cuc.html">Tìm bưu cục</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ho-tro.html">Hỗ trợ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dich-vu.html">Dịch vụ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tim-24.7.html">Tin 24/7</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tuwendung.html">Tuyển dụng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="vechungtoi.html">Về chúng tôi</a>
+                        </li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <a class="btn btn-danger px-4" href="tel:19086980">
+                                <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content pt-5 mt-5">
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-danger text-white">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-5 fw-bold mb-4">Dịch Vụ Chuyển Phát Chuyên Nghiệp</h1>
+                        <p class="lead mb-4">Chúng tôi cung cấp đa dạng dịch vụ chuyển phát nhanh, đảm bảo an toàn, nhanh chóng và tiết kiệm chi phí cho mọi nhu cầu của bạn.</p>
+                        <a href="#services" class="btn btn-light btn-lg px-4">
+                            <i class="fas fa-arrow-down me-2"></i>Khám phá dịch vụ
                         </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- ===== HERO SECTION ===== -->
-    <section class="service-hero">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="dich-vu.html">Dịch Vụ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Chuyển phát nhanh</li>
-                </ol>
-            </nav>
-            
-            <h1 class="page-title">Dịch Vụ Chuyển Phát Nhanh</h1>
-            <p class="lead mb-0">Chuyển phát thư từ, hàng hóa bằng đường hàng không hoặc phương thức có tốc độ nhanh nhất, đảm bảo hành trình giao nhận diễn ra nhanh chóng.</p>
-        </div>
-    </section>
-
-    <!-- ===== MAIN SERVICES ===== -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-6">
-                    <h2 class="fw-bold display-6 mb-4">Đơn Vị Chuyển Phát Hàng Đầu Dành Cho Doanh Nghiệp</h2>
-                    <div class="d-flex align-items-center mb-4">
-                        <div class="bg-danger text-white px-3 py-1 rounded me-3">
-                            <i class="fas fa-trophy me-1"></i> TOP 5
-                        </div>
-                        <p class="mb-0 fw-bold">Công ty uy tín ngành Logistics năm 2023 theo VNR500</p>
                     </div>
-                    <p class="lead">Chúng tôi cung cấp giải pháp logistics toàn diện với công nghệ hiện đại, đội ngũ chuyên nghiệp và hệ thống phân phối rộng khắp.</p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="bg-light p-4 rounded">
-                        <h4 class="fw-bold mb-3">Tốc độ chuyển phát nhanh xét theo vùng</h4>
-                        <div class="row">
-                            <div class="col-6 mb-3">
-                                <div class="text-center p-3 bg-white rounded">
-                                    <div class="h4 fw-bold text-danger mb-1">2-4h</div>
-                                    <div class="small">Nội thành</div>
-                                </div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="text-center p-3 bg-white rounded">
-                                    <div class="h4 fw-bold text-danger mb-1">24h</div>
-                                    <div class="small">Liên tỉnh gần</div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="text-center p-3 bg-white rounded">
-                                    <div class="h4 fw-bold text-danger mb-1">48-72h</div>
-                                    <div class="small">Liên tỉnh xa</div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="text-center p-3 bg-white rounded">
-                                    <div class="h4 fw-bold text-danger mb-1">3-7 ngày</div>
-                                    <div class="small">Quốc tế</div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-lg-4 text-center">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/18/19/01/parcel-1836334_1280.jpg" 
+                             alt="Dịch vụ chuyển phát" class="img-fluid rounded-circle shadow-lg">
                     </div>
                 </div>
             </div>
-            
-            <!-- Digital Twin Section -->
-            <div class="row mb-5 align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Digital Twin Technology" 
-                         class="img-fluid rounded">
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Dịch Vụ Của Chúng Tôi</h2>
+                    <p class="lead text-muted">Đa dạng giải pháp chuyển phát phù hợp với mọi nhu cầu</p>
                 </div>
-                <div class="col-lg-6">
-                    <h3 class="fw-bold mb-3">DIGITAL TWIN</h3>
-                    <h4 class="fw-bold text-primary mb-4">BẢN SAO KỸ THUẬT SỐ ỨNG DỤNG TRONG CHUỖI CUNG ỨNG</h4>
-                    <p>Trong bối cảnh ngành logistics ngày càng phát triển mạnh mẽ để đáp ứng nhu cầu thị trường, bản sao kỹ thuật số (Digital Twin) đang trở thành một công nghệ quan trọng giúp doanh nghiệp quản lý, dự đoán và tối ưu hóa vận hành một cách chính xác và hiệu quả.</p>
-                    <p>Đây được xem là bước tiến lớn trong quá trình chuyển đổi số của doanh nghiệp. Hãy cùng 24/7 Express khám phá công nghệ đột phá này.</p>
-                    <a href="#" class="btn btn-outline-primary">Tìm hiểu thêm</a>
+                
+                <div class="row g-4">
+                    <!-- Service 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card service-card shadow-sm h-100">
+                            <span class="price-badge badge bg-danger">Từ 15.000đ</span>
+                            <div class="card-body p-4 text-center">
+                                <div class="service-icon">
+                                    <i class="fas fa-motorcycle text-danger fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Chuyển Phát Nhanh</h4>
+                                <p class="card-text text-muted mb-4">
+                                    Giao hàng nhanh trong nội thành chỉ từ 2-4 giờ. Phù hợp cho tài liệu, hàng hóa nhỏ cần giao gấp.
+                                </p>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Giao trong ngày</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Theo dõi online 24/7</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Đảm bảo thời gian</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Hỗ trợ đóng gói</li>
+                                </ul>
+                                <a href="#" class="btn btn-danger mt-3 w-100">Đăng ký ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card service-card shadow-sm h-100 border-danger">
+                            <span class="price-badge badge bg-danger">Từ 25.000đ</span>
+                            <div class="card-body p-4 text-center">
+                                <div class="service-icon">
+                                    <i class="fas fa-truck text-danger fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Chuyển Phát Liên Tỉnh</h4>
+                                <p class="card-text text-muted mb-4">
+                                    Vận chuyển hàng hóa giữa các tỉnh thành chỉ từ 1-3 ngày. Áp dụng cho cả hàng cồng kềnh.
+                                </p>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Toàn quốc</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bảo hiểm hàng hóa</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Đóng gói chuyên nghiệp</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>COD toàn quốc</li>
+                                </ul>
+                                <a href="#" class="btn btn-danger mt-3 w-100">Đăng ký ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card service-card shadow-sm h-100">
+                            <span class="price-badge badge bg-danger">Từ 300.000đ</span>
+                            <div class="card-body p-4 text-center">
+                                <div class="service-icon">
+                                    <i class="fas fa-plane text-danger fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Chuyển Phát Quốc Tế</h4>
+                                <p class="card-text text-muted mb-4">
+                                    Dịch vụ chuyển phát quốc tế đến hơn 200 quốc gia. Thủ tục đơn giản, thời gian đảm bảo.
+                                </p>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>200+ quốc gia</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Hải quan trọn gói</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Theo dõi toàn cầu</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Bảo hiểm quốc tế</li>
+                                </ul>
+                                <a href="#" class="btn btn-danger mt-3 w-100">Đăng ký ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card service-card shadow-sm h-100">
+                            <div class="card-body p-4 text-center">
+                                <div class="service-icon">
+                                    <i class="fas fa-box-open text-danger fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Dịch Vụ COD</h4>
+                                <p class="card-text text-muted mb-4">
+                                    Thu hộ tiền hàng (COD) an toàn, nhanh chóng. Giải pháp tối ưu cho shop online và doanh nghiệp.
+                                </p>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Thu hộ đến 100 triệu</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Chuyển khoản nhanh</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Báo cáo chi tiết</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Hỗ trợ 24/7</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-danger mt-3 w-100">Tìm hiểu thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card service-card shadow-sm h-100">
+                            <div class="card-body p-4 text-center">
+                                <div class="service-icon">
+                                    <i class="fas fa-warehouse text-danger fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Kho Vận & Logistics</h4>
+                                <p class="card-text text-muted mb-4">
+                                    Giải pháp kho vận trọn gói: lưu kho, đóng gói, xử lý đơn hàng và phân phối hàng hóa.
+                                </p>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Lưu kho dài hạn</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Đóng gói chuyên nghiệp</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Xử lý đơn hàng</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Quản lý tồn kho</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-danger mt-3 w-100">Tìm hiểu thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card service-card shadow-sm h-100">
+                            <div class="card-body p-4 text-center">
+                                <div class="service-icon">
+                                    <i class="fas fa-gem text-danger fa-3x"></i>
+                                </div>
+                                <h4 class="card-title fw-bold mb-3">Dịch Vụ Cao Cấp</h4>
+                                <p class="card-text text-muted mb-4">
+                                    Dịch vụ đặc biệt cho hàng hóa giá trị cao, hàng dễ vỡ, hàng y tế và các mặt hàng đặc biệt khác.
+                                </p>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Hàng giá trị cao</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Hàng dễ vỡ</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Hàng y tế</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Bảo mật tuyệt đối</li>
+                                </ul>
+                                <a href="#" class="btn btn-outline-danger mt-3 w-100">Tìm hiểu thêm</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Service Cards -->
-            <h2 class="fw-bold text-center mb-5">Dịch Vụ Chính Của Chúng Tôi</h2>
-            
-            <div class="row">
-                <!-- Service 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card featured">
-                        <div class="service-badge">PHỔ BIẾN</div>
-                        <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Chuyển phát nhanh" 
-                             class="service-image">
-                        <div class="service-content">
-                            <div class="service-icon">
-                                <i class="fas fa-shipping-fast"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Chuyển Phát Nhanh</h4>
-                            <p class="text-muted mb-4">Dịch vụ giao hàng siêu tốc trong nội thành và liên tỉnh với thời gian đảm bảo.</p>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold">Nội thành 2-4h</h6>
-                                    <p class="small text-muted mb-0">Giao hàng siêu tốc trong nội thành</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-truck"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold">Liên tỉnh 24h</h6>
-                                    <p class="small text-muted mb-0">Giao hàng liên tỉnh nhanh chóng</p>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-danger w-100 mt-3">Tìm hiểu thêm</a>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Quy Trình 4 Bước Đơn Giản</h2>
+                    <p class="lead text-muted">Gửi hàng nhanh chóng chỉ với 4 bước đơn giản</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="text-center p-3">
+                            <div class="step-number">1</div>
+                            <h4 class="h5 fw-bold mb-3">Đăng Ký</h4>
+                            <p class="text-muted">Đăng ký tài khoản trực tuyến hoặc qua điện thoại</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="text-center p-3">
+                            <div class="step-number">2</div>
+                            <h4 class="h5 fw-bold mb-3">Đóng Gói</h4>
+                            <p class="text-muted">Đóng gói hàng hóa hoặc sử dụng dịch vụ đóng gói của chúng tôi</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="text-center p-3">
+                            <div class="step-number">3</div>
+                            <h4 class="h5 fw-bold mb-3">Giao Nhận</h4>
+                            <p class="text-muted">Nhân viên đến tận nơi nhận hàng và vận chuyển</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="text-center p-3">
+                            <div class="step-number">4</div>
+                            <h4 class="h5 fw-bold mb-3">Theo Dõi</h4>
+                            <p class="text-muted">Theo dõi hành trình đơn hàng 24/7 qua website hoặc app</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Service 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Vận chuyển quốc tế" 
-                             class="service-image">
-                        <div class="service-content">
-                            <div class="service-icon">
-                                <i class="fas fa-globe-asia"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Vận Chuyển Quốc Tế</h4>
-                            <p class="text-muted mb-4">Dịch vụ chuyển phát quốc tế chuyên nghiệp với thông quan nhanh chóng.</p>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-plane"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold">60+ quốc gia</h6>
-                                    <p class="small text-muted mb-0">Phủ sóng toàn cầu</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-file-contract"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold">Thông quan</h6>
-                                    <p class="small text-muted mb-0">Hỗ trợ thủ tục hải quan</p>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger w-100 mt-3">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Logistics doanh nghiệp" 
-                             class="service-image">
-                        <div class="service-content">
-                            <div class="service-icon">
-                                <i class="fas fa-warehouse"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Logistics Doanh Nghiệp</h4>
-                            <p class="text-muted mb-4">Giải pháp logistics trọn gói cho doanh nghiệp với chi phí tối ưu.</p>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-boxes"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold">Kho bãi</h6>
-                                    <p class="small text-muted mb-0">Hệ thống kho hiện đại</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold">Tối ưu chi phí</h6>
-                                    <p class="small text-muted mb-0">Giải pháp logistics tối ưu</p>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger w-100 mt-3">Tìm hiểu thêm</a>
-                        </div>
-                    </div>
+                <div class="text-center mt-5">
+                    <a href="#" class="btn btn-danger btn-lg px-5">
+                        <i class="fas fa-play-circle me-2"></i>Xem video hướng dẫn
+                    </a>
                 </div>
             </div>
-            
-            <!-- Additional Services -->
-            <div class="row mt-4">
-                <div class="col-md-4 mb-4">
-                    <div class="service-card">
-                        <div class="service-content">
-                            <div class="service-icon">
-                                <i class="fas fa-money-bill-wave"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Thu Hộ COD</h4>
-                            <p class="text-muted">Dịch vụ thu hộ tiền hàng (COD) an toàn, nhanh chóng với tỷ lệ thành công 99%.</p>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Thu hộ lên đến 50 triệu/đơn</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Chuyển khoản nhanh 24/7</li>
-                                <li><i class="fas fa-check text-success me-2"></i> Báo cáo chi tiết hàng ngày</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="service-card">
-                        <div class="service-content">
-                            <div class="service-icon">
-                                <i class="fas fa-box-open"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Đóng Gói Chuyên Nghiệp</h4>
-                            <p class="text-muted">Đóng gói hàng hóa an toàn với vật liệu chuyên dụng cho mọi loại hàng hóa.</p>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Vật liệu đóng gói đa dạng</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Đóng gói hàng dễ vỡ</li>
-                                <li><i class="fas fa-check text-success me-2"></i> Tư vấn đóng gói miễn phí</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="service-card">
-                        <div class="service-content">
-                            <div class="service-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h4 class="fw-bold mb-3">Bảo Hiểm Hàng Hóa</h4>
-                            <p class="text-muted">Bảo hiểm đầy đủ cho hàng hóa với mức bồi thường lên đến 100% giá trị.</p>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Bảo hiểm toàn diện</li>
-                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Bồi thường nhanh chóng</li>
-                                <li><i class="fas fa-check text-success me-2"></i> Hỗ trợ 24/7 khi cần</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== STATS SECTION ===== -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">200+</div>
-                    <p>Bưu Cục</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">50,000+</div>
-                    <p>Đơn Hàng/Ngày</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">63</div>
-                    <p>Tỉnh Thành</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">99.8%</div>
-                    <p>Tỷ Lệ Thành Công</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PRICING SECTION ===== -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="fw-bold text-center mb-5">Bảng Giá Dịch Vụ</h2>
-            
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="pricing-card">
-                        <h4 class="fw-bold mb-3">Cơ Bản</h4>
-                        <p class="text-muted">Phù hợp cho cá nhân, hộ gia đình</p>
-                        <div class="price">15,000đ</div>
-                        <p class="text-muted">/kg đầu tiên</p>
-                        
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Giao hàng nội thành 24h</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Theo dõi đơn hàng cơ bản</li>
-                            <li class="mb-3"><i class="fas fa-times text-danger me-2"></i> Không bao gồm COD</li>
-                            <li class="mb-3"><i class="fas fa-times text-danger me-2"></i> Không bao gồm bảo hiểm</li>
-                        </ul>
-                        
-                        <a href="#" class="btn btn-outline-danger w-100">Chọn gói</a>
-                    </div>
+        <!-- Pricing Section -->
+        <section class="pricing-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Bảng Giá Tham Khảo</h2>
+                    <p class="lead text-muted">Chi phí minh bạch, không phát sinh</p>
                 </div>
                 
-                <div class="col-md-4 mb-4">
-                    <div class="pricing-card featured">
-                        <div class="pricing-badge">PHỔ BIẾN</div>
-                        <h4 class="fw-bold mb-3">Tiêu Chuẩn</h4>
-                        <p class="text-muted">Phù hợp cho shop online nhỏ</p>
-                        <div class="price">25,000đ</div>
-                        <p class="text-muted">/kg đầu tiên</p>
-                        
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Giao hàng nội thành 4h</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Theo dõi đơn hàng chi tiết</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Thu hộ COD đến 10 triệu</li>
-                            <li class="mb-3"><i class="fas fa-times text-danger me-2"></i> Bảo hiểm cơ bản</li>
-                        </ul>
-                        
-                        <a href="#" class="btn btn-danger w-100">Chọn gói</a>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered text-center align-middle">
+                        <thead class="table-danger">
+                            <tr>
+                                <th scope="col">Loại Hàng</th>
+                                <th scope="col">Nội Thành</th>
+                                <th scope="col">Liên Tỉnh Gần</th>
+                                <th scope="col">Liên Tỉnh Xa</th>
+                                <th scope="col">Quốc Tế (Châu Á)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-start fw-bold">Tài liệu (0.5kg)</td>
+                                <td>15.000đ</td>
+                                <td>25.000đ</td>
+                                <td>35.000đ</td>
+                                <td>300.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start fw-bold">Hàng nhỏ (1kg)</td>
+                                <td>20.000đ</td>
+                                <td>30.000đ</td>
+                                <td>45.000đ</td>
+                                <td>450.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start fw-bold">Hàng trung (3kg)</td>
+                                <td>40.000đ</td>
+                                <td>60.000đ</td>
+                                <td>90.000đ</td>
+                                <td>850.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start fw-bold">Hàng lớn (5kg)</td>
+                                <td>60.000đ</td>
+                                <td>90.000đ</td>
+                                <td>130.000đ</td>
+                                <td>1.200.000đ</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start fw-bold">COD (phí thu hộ)</td>
+                                <td>1.5%</td>
+                                <td>1.8%</td>
+                                <td>2%</td>
+                                <td>3.5%</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 
-                <div class="col-md-4 mb-4">
-                    <div class="pricing-card">
-                        <h4 class="fw-bold mb-3">Doanh Nghiệp</h4>
-                        <p class="text-muted">Phù hợp cho doanh nghiệp vừa và lớn</p>
-                        <div class="price">Liên hệ</div>
-                        <p class="text-muted">Giá tùy chỉnh</p>
-                        
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Giao hàng siêu tốc 2h</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> API tích hợp hệ thống</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Thu hộ COD không giới hạn</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i> Bảo hiểm toàn diện</li>
-                        </ul>
-                        
-                        <a href="#" class="btn btn-outline-danger w-100">Liên hệ tư vấn</a>
-                    </div>
+                <div class="alert alert-info mt-4" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Lưu ý:</strong> Bảng giá trên chỉ mang tính tham khảo. Vui lòng liên hệ hotline <strong>1900 6980</strong> để được báo giá chính xác nhất theo loại hàng và địa chỉ cụ thể.
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ===== CTA SECTION ===== -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="fw-bold mb-4">Sẵn Sàng Trải Nghiệm Dịch Vụ?</h2>
-            <p class="lead mb-4">Đăng ký ngay hôm nay để nhận ưu đãi 20% cho lần gửi hàng đầu tiên</p>
-            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-                <a href="tel:19006980" class="btn btn-light btn-lg">
-                    <i class="fas fa-phone-alt me-2"></i>Gọi Ngay: 1900 6980
-                </a>
-                <a href="#" class="btn btn-outline-light btn-lg">
-                    <i class="fas fa-calendar-alt me-2"></i>Đặt Lịch Tư Vấn
-                </a>
+        <!-- CTA Section -->
+        <section class="cta-section py-5 bg-danger text-white">
+            <div class="container text-center py-5">
+                <h2 class="display-6 fw-bold mb-4">Sẵn Sàng Trải Nghiệm Dịch Vụ?</h2>
+                <p class="lead mb-4">Đăng ký ngay hôm nay để nhận ưu đãi 20% cho lần gửi hàng đầu tiên</p>
+                <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                    <a href="tel:19086980" class="btn btn-light btn-lg px-5">
+                        <i class="fas fa-phone-alt me-2"></i>Gọi ngay: 1900 6980
+                    </a>
+                    <a href="#" class="btn btn-outline-light btn-lg px-5">
+                        <i class="fas fa-calendar-alt me-2"></i>Đặt lịch lấy hàng
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="pt-5">
+    <!-- FOOTER -->
+    <footer class="footer bg-dark text-white pt-5 pb-4">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h4 class="fw-bold mb-4">
-                        <i class="fas fa-bolt me-2"></i>24/7 EXPRESS
+                <!-- Company Info -->
+                <div class="col-lg-4 mb-4">
+                    <h4 class="fw-bold mb-3">
+                        <i class="fas fa-shipping-fast me-2"></i>EXPRESS
                     </h4>
-                    <p>Chuyển phát nhanh 24/7 - Luôn sẵn sàng phục vụ mọi lúc, mọi nơi.</p>
+                    <p class="mb-3">Dịch vụ chuyển phát nhanh hàng đầu Việt Nam, cam kết mang đến trải nghiệm tốt nhất cho khách hàng.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="fw-bold mb-4">Liên Kết Nhanh</h5>
-                    <a href="index.html" class="d-block text-decoration-none text-dark mb-2">Trang chủ</a>
-                    <a href="tim-buu-cuc.html" class="d-block text-decoration-none text-dark mb-2">Tìm bưu cục</a>
-                    <a href="dich-vu.html" class="d-block text-decoration-none text-dark mb-2">Dịch vụ</a>
-                    <a href="tin-24-7.html" class="d-block text-decoration-none text-dark mb-2">Tin 24/7</a>
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Liên Kết Nhanh</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="tim-buu-cuc.html" class="text-white-50 text-decoration-none">Tìm bưu cục</a></li>
+                        <li class="mb-2"><a href="dich-vu.html" class="text-white-50 text-decoration-none">Dịch vụ</a></li>
+                        <li class="mb-2"><a href="tuwendung.html" class="text-white-50 text-decoration-none">Tuyển dụng</a></li>
+                    </ul>
                 </div>
                 
+                <!-- Support -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="fw-bold mb-4">Hỗ Trợ</h5>
-                    <a href="ho-tro.html" class="d-block text-decoration-none text-dark mb-2">Câu hỏi thường gặp</a>
-                    <a href="ho-tro.html" class="d-block text-decoration-none text-dark mb-2">Chính sách vận chuyển</a>
-                    <a href="ho-tro.html" class="d-block text-decoration-none text-dark mb-2">Bảo mật thông tin</a>
+                    <h5 class="fw-bold mb-3">Hỗ Trợ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Câu hỏi thường gặp</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Hướng dẫn sử dụng</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Chính sách bảo mật</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Điều khoản dịch vụ</a></li>
+                    </ul>
                 </div>
                 
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="fw-bold mb-4">Liên Hệ</h5>
-                    <p class="mb-2"><i class="fas fa-phone me-2"></i> 1900 6980</p>
-                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@247express.vn</p>
-                    <p class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> 230 Võ Văn Kiệt, Q.1, TP.HCM</p>
+                <!-- Contact -->
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Liên Hệ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            123 Nguyễn Văn Linh, Quận 7, TP.HCM
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            1900 6980
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            hotro@express.vn
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock me-2"></i>
+                            8:00 - 20:00 (Thứ 2 - Chủ nhật)
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <hr class="bg-dark">
+            <hr class="bg-secondary">
             
-            <div class="row py-4">
-                <div class="col-md-6">
-                    <p class="mb-0">© 2023 24/7 Express. All rights reserved.</p>
+            <div class="row pt-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2024 EXPRESS. Tất cả các quyền được bảo lưu.</p>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="text-dark text-decoration-none me-3">Chính sách bảo mật</a>
-                    <a href="#" class="text-dark text-decoration-none">Điều khoản sử dụng</a>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Được phát triển bởi <a href="vechungtoi.html" class="text-danger text-decoration-none">EXPRESS Team</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-        // Pricing calculator (simplified)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Service card hover effect
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Pricing calculator
-            console.log('Trang Dịch vụ đã sẵn sàng!');
-            console.log('Các trang tiếp theo cần tạo:');
-            console.log('1. tin-24-7.html - Trang tin tức');
-            console.log('2. tuyen-dung.html - Trang tuyển dụng');
-            console.log('3. ve-chung-toi.html - Trang về chúng tôi');
-        });
-    </script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
