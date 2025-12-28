@@ -536,17 +536,21 @@
                             <p class="lead mb-0">Đăng ký nhận bản tin để cập nhật tin tức, khuyến mãi và thông tin hữu ích từ EXPRESS.</p>
                         </div>
                         <div class="col-lg-6">
-                            <form id="newsletterForm">
-                                <div class="input-group">
-                                    <input type="email" class="form-control py-3" placeholder="Nhập email của bạn" required>
-                                    <button class="btn btn-light py-3 px-4" type="submit">
-                                        <i class="fas fa-paper-plane me-2"></i>Đăng ký
-                                    </button>
-                                </div>
-                                <div class="form-text mt-2 text-white-50">
-                                    Chúng tôi cam kết không spam. Bạn có thể hủy đăng ký bất cứ lúc nào.
-                                </div>
-                            </form>
+                            <form action="https://formspree.io/f/mregkyev" method="POST" id="newsletterForm">
+    <div class="input-group">
+        <input type="email" class="form-control py-3" name="email" placeholder="Nhập email của bạn" required>
+        <button class="btn btn-light py-3 px-4" type="submit">
+            <i class="fas fa-paper-plane me-2"></i>Đăng ký
+        </button>
+    </div>
+    
+    <div class="form-text mt-2 text-white-50">
+        Chúng tôi cam kết không spam. Bạn có thể hủy đăng ký bất cứ lúc nào.
+    </div>
+
+    <input type="hidden" name="_next" value="https://tuanvuht.github.io/vutekexpress/tin-tuc.html">
+    <input type="hidden" name="_subject" value="Khách mới đăng ký nhận bản tin!">
+</form>
                         </div>
                     </div>
                 </div>
@@ -708,29 +712,7 @@
     
     <script>
         // Newsletter form submission
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            // Show loading
-            const btn = this.querySelector('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> Đang xử lý...';
-            btn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // Show success message
-                EXPRESS.showToast('Thành công!', `Cảm ơn bạn đã đăng ký nhận bản tin với email: ${email}`, 'success');
-                
-                // Reset form
-                this.reset();
-                
-                // Reset button
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
+        
         
         // Filter news by category
         document.querySelectorAll('.dropdown-item').forEach(item => {
