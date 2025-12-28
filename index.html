@@ -476,33 +476,59 @@
                     <h2 class="fw-bold mb-4">Liên Hệ Với Chúng Tôi</h2>
                     <p class="text-muted mb-4">Đội ngũ 24/7 Express luôn sẵn sàng hỗ trợ và tư vấn dịch vụ tốt nhất cho quý khách.</p>
                     
-                    <div class="contact-form">
-                        <form>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Họ và tên *</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Số điện thoại *</label>
-                                    <input type="tel" class="form-control" required>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Nội dung liên hệ</label>
-                                <textarea class="form-control" rows="4" placeholder="Nhập nội dung cần hỗ trợ..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-danger btn-lg w-100">
-                                <i class="fas fa-paper-plane me-2"></i>Gửi Liên Hệ
-                            </button>
-                        </form>
+                    
+                        <form action="https://formspree.io/f/mregkyev" method="POST" class="contact-form">
+    
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">Họ và tên *</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Nhập họ tên" required>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="phone">Số điện thoại *</label>
+                <input type="tel" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="email">Email *</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email của bạn" required>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="subject">Chủ đề *</label>
+        <select class="form-control" name="subject" id="subject">
+            <option value="Hỗ trợ dịch vụ">Hỗ trợ dịch vụ</option>
+            <option value="Khiếu nại">Khiếu nại</option>
+            <option value="Hợp tác">Hợp tác kinh doanh</option>
+            <option value="Tuyển dụng">Tuyển dụng</option>
+            <option value="Khác">Khác</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="message">Nội dung *</label>
+        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Nội dung cần hỗ trợ" required></textarea>
+    </div>
+
+    <div class="form-check mb-4">
+        <input type="checkbox" class="form-check-input" id="agree" required>
+        <label class="form-check-label" for="agree">
+            Tôi đồng ý với chính sách bảo mật và điều khoản dịch vụ
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg w-100">Gửi Yêu Cầu</button>
+
+    <input type="hidden" name="_next" value="https://tuanvuht.github.io/vutekexpress/ho-tro.html">
+    
+    <input type="hidden" name="_subject" value="Có liên hệ mới từ Website Vutek Express!">
+</form>
                     </div>
                     
                     <div class="mt-4">
