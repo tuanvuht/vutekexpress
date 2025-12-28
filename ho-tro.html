@@ -359,51 +359,55 @@
                     <div class="col-lg-6">
                         <div class="card shadow border-0">
                             <div class="card-body p-4">
-                                <form id="contactForm">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Họ và tên *</label>
-                                        <input type="text" class="form-control" id="name" required>
-                                    </div>
-                                    
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="phone" class="form-label">Số điện thoại *</label>
-                                            <input type="tel" class="form-control" id="phone" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="email" class="form-label">Email *</label>
-                                            <input type="email" class="form-control" id="email" required>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="subject" class="form-label">Chủ đề *</label>
-                                        <select class="form-select" id="subject" required>
-                                            <option value="" selected disabled>Chọn chủ đề</option>
-                                            <option>Hỗ trợ dịch vụ</option>
-                                            <option>Khiếu nại</option>
-                                            <option>Hợp tác kinh doanh</option>
-                                            <option>Tuyển dụng</option>
-                                            <option>Khác</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="message" class="form-label">Nội dung *</label>
-                                        <textarea class="form-control" id="message" rows="5" required></textarea>
-                                    </div>
-                                    
-                                    <div class="mb-3 form-check">
-                                        <input type="checkbox" class="form-check-input" id="agree" required>
-                                        <label class="form-check-label" for="agree">
-                                            Tôi đồng ý với <a href="#" class="text-danger">chính sách bảo mật</a> và <a href="#" class="text-danger">điều khoản dịch vụ</a>
-                                        </label>
-                                    </div>
-                                    
-                                    <button type="submit" class="btn btn-danger w-100 py-2">
-                                        <i class="fas fa-paper-plane me-2"></i>Gửi yêu cầu
-                                    </button>
-                                </form>
+                         <form action="https://formspree.io/f/mregkyev" method="POST" id="contactForm">
+    
+    <div class="mb-3">
+        <label for="name" class="form-label">Họ và tên *</label>
+        <input type="text" class="form-control" id="name" name="name" required placeholder="Nhập họ tên của bạn">
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="phone" class="form-label">Số điện thoại *</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required placeholder="Nhập số điện thoại">
+        </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" class="form-control" id="email" name="email" required placeholder="Nhập email">
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="subject" class="form-label">Chủ đề *</label>
+        <select class="form-select" id="subject" name="subject" required>
+            <option value="" selected disabled>Chọn chủ đề</option>
+            <option value="Hỗ trợ dịch vụ">Hỗ trợ dịch vụ</option>
+            <option value="Khiếu nại">Khiếu nại</option>
+            <option value="Hợp tác kinh doanh">Hợp tác kinh doanh</option>
+            <option value="Tuyển dụng">Tuyển dụng</option>
+            <option value="Khác">Khác</option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label for="message" class="form-label">Nội dung *</label>
+        <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Nội dung cần hỗ trợ"></textarea>
+    </div>
+    
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="agree" required>
+        <label class="form-check-label" for="agree">
+            Tôi đồng ý với <a href="#" class="text-danger">chính sách bảo mật</a> và <a href="#" class="text-danger">điều khoản dịch vụ</a>
+        </label>
+    </div>
+    
+    <button type="submit" class="btn btn-danger w-100 py-2">
+        <i class="fas fa-paper-plane me-2"></i>Gửi yêu cầu
+    </button>
+
+    <input type="hidden" name="_next" value="https://tuanvuht.github.io/vutekexpress/ho-tro.html">
+    <input type="hidden" name="_subject" value="Yêu cầu hỗ trợ mới từ Website">
+</form>
                             </div>
                         </div>
                     </div>
