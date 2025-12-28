@@ -610,50 +610,53 @@
                             <div class="card-body p-4">
                                 <h4 class="fw-bold text-dark mb-4">Gửi Thông Điệp</h4>
                                 
-                                <form id="contactMessageForm">
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="contactName" class="form-label">Họ và tên *</label>
-                                            <input type="text" class="form-control" id="contactName" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="contactCompany" class="form-label">Công ty</label>
-                                            <input type="text" class="form-control" id="contactCompany">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="contactPhone" class="form-label">Số điện thoại *</label>
-                                            <input type="tel" class="form-control" id="contactPhone" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="contactEmail" class="form-label">Email *</label>
-                                            <input type="email" class="form-control" id="contactEmail" required>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="contactSubject" class="form-label">Chủ đề *</label>
-                                        <select class="form-select" id="contactSubject" required>
-                                            <option value="" selected disabled>Chọn chủ đề</option>
-                                            <option>Hợp tác kinh doanh</option>
-                                            <option>Truyền thông & Báo chí</option>
-                                            <option>Góp ý & Khiếu nại</option>
-                                            <option>Tuyển dụng</option>
-                                            <option>Khác</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="contactMessage" class="form-label">Nội dung *</label>
-                                        <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
-                                    </div>
-                                    
-                                    <button type="submit" class="btn btn-danger w-100 py-2">
-                                        <i class="fas fa-paper-plane me-2"></i>Gửi thông điệp
-                                    </button>
-                                </form>
+                                <form action="https://formspree.io/f/mregkyev" method="POST" id="contactMessageForm">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="contactName" class="form-label">Họ và tên *</label>
+            <input type="text" class="form-control" id="contactName" name="ho_ten" required>
+        </div>
+        <div class="col-md-6">
+            <label for="contactCompany" class="form-label">Công ty</label>
+            <input type="text" class="form-control" id="contactCompany" name="cong_ty">
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="contactPhone" class="form-label">Số điện thoại *</label>
+            <input type="tel" class="form-control" id="contactPhone" name="so_dien_thoai" required>
+        </div>
+        <div class="col-md-6">
+            <label for="contactEmail" class="form-label">Email *</label>
+            <input type="email" class="form-control" id="contactEmail" name="email" required>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="contactSubject" class="form-label">Chủ đề *</label>
+        <select class="form-select" id="contactSubject" name="chu_de" required>
+            <option value="" selected disabled>Chọn chủ đề</option>
+            <option value="Hợp tác kinh doanh">Hợp tác kinh doanh</option>
+            <option value="Truyền thông & Báo chí">Truyền thông & Báo chí</option>
+            <option value="Góp ý & Khiếu nại">Góp ý & Khiếu nại</option>
+            <option value="Tuyển dụng">Tuyển dụng</option>
+            <option value="Khác">Khác</option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label for="contactMessage" class="form-label">Nội dung *</label>
+        <textarea class="form-control" id="contactMessage" name="noi_dung" rows="4" required></textarea>
+    </div>
+
+    <input type="hidden" name="_subject" value="Tin nhắn liên hệ mới từ trang Về Chúng Tôi">
+    <input type="hidden" name="_next" value="https://tuanvuht.github.io/vutekexpress/ve-chung-toi.html">
+    
+    <button type="submit" class="btn btn-danger w-100 py-2">
+        <i class="fas fa-paper-plane me-2"></i>Gửi thông điệp
+    </button>
+</form>
                             </div>
                         </div>
                     </div>
@@ -747,32 +750,6 @@
     
     <script>
         // Contact Form Submission
-        document.getElementById('contactMessageForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> Đang gửi...';
-            btn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // Show success message
-                EXPRESS.showToast(
-                    'Thành công!', 
-                    'Cảm ơn bạn đã liên hệ với EXPRESS. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.', 
-                    'success'
-                );
-                
-                // Reset form
-                this.reset();
-                
-                // Reset button
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
         
         // Animate milestone numbers
         function animateMilestoneNumbers() {
