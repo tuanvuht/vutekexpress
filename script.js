@@ -104,19 +104,21 @@ function initAnimations() {
 }
 
 // ===== FORM VALIDATIONS =====
+// ===== FORM VALIDATIONS (ĐÃ SỬA ĐỂ GỬI ĐƯỢC FORMSPREE) =====
 function initFormValidations() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
+            // 1. Kiểm tra tính hợp lệ (Validate)
             if (!this.checkValidity()) {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // Add Bootstrap validation styles
+                // Thêm style lỗi của Bootstrap
                 this.classList.add('was-validated');
                 
-                // Scroll to first invalid field
+                // Cuộn tới trường bị lỗi đầu tiên
                 const firstInvalid = this.querySelector(':invalid');
                 if (firstInvalid) {
                     firstInvalid.scrollIntoView({
@@ -126,33 +128,49 @@ function initFormValidations() {
                     firstInvalid.focus();
                 }
             } else {
-                // Form is valid - show success message
+                // 2. Nếu Form hợp lệ
+                
+                // --- SỬA ĐỔI QUAN TRỌNG TẠI ĐÂY ---
+                
+                // Kiểm tra xem đây có phải là form liên hệ không (dựa vào ID hoặc Action)
+                const isContactForm = this.id === 'contactForm' || this.action.includes('formspree');
+
+                if (isContactForm) {
+                    // Nếu là Contact Form:
+                    // Chỉ đổi nút thành "Đang xử lý..." cho đẹp
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    if(submitBtn) {
+                        submitBtn.innerHTML = '<span class="loading"></span> Đang gửi...';
+                        submitBtn.disabled = true;
+                    }
+                    
+                    // KHÔNG DÙNG e.preventDefault() ĐỂ FORM ĐƯỢC GỬI ĐI FORMSPREE
+                    // Dữ liệu sẽ bay đi và trang web sẽ chuyển hướng
+                    return; 
+                }
+
+                // --- HẾT PHẦN SỬA ĐỔI ---
+
+                // Với các form khác (ví dụ form demo khác), giữ nguyên code mô phỏng cũ
+                e.preventDefault(); // Chặn gửi thật
+                
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
                 
-                // Show loading state
                 submitBtn.innerHTML = '<span class="loading"></span> Đang xử lý...';
                 submitBtn.disabled = true;
                 
-                // Simulate API call
                 setTimeout(() => {
-                    // Success message
                     showToast('Thành công!', 'Yêu cầu của bạn đã được gửi thành công.', 'success');
-                    
-                    // Reset form
                     this.reset();
                     this.classList.remove('was-validated');
-                    
-                    // Reset button
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 }, 1500);
-                
-                e.preventDefault();
             }
         });
         
-        // Real-time validation
+        // Real-time validation (Giữ nguyên)
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
             input.addEventListener('input', function() {
