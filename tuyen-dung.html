@@ -810,64 +810,67 @@
                             <div class="card-body p-4">
                                 <h4 class="fw-bold text-dark mb-4">Form Ứng Tuyển</h4>
                                 
-                                <form id="applicationForm">
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="appName" class="form-label">Họ và tên *</label>
-                                            <input type="text" class="form-control" id="appName" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="appPhone" class="form-label">Số điện thoại *</label>
-                                            <input type="tel" class="form-control" id="appPhone" required>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="appEmail" class="form-label">Email *</label>
-                                        <input type="email" class="form-control" id="appEmail" required>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="appPosition" class="form-label">Vị trí ứng tuyển *</label>
-                                        <select class="form-select" id="appPosition" required>
-                                            <option value="" selected disabled>Chọn vị trí</option>
-                                            <option>Senior Frontend Developer</option>
-                                            <option>Quản Lý Vận Chuyển</option>
-                                            <option>Chuyên Viên Kinh Doanh</option>
-                                            <option>Nhân Viên Hỗ Trợ Khách Hàng</option>
-                                            <option>Backend Developer</option>
-                                            <option>Thực Tập Sinh Marketing</option>
-                                            <option>Khác (Ghi rõ trong CV)</option>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="appExperience" class="form-label">Kinh nghiệm làm việc (năm) *</label>
-                                        <input type="number" class="form-control" id="appExperience" min="0" max="50" required>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="appCV" class="form-label">Tải lên CV (PDF/DOC, max 5MB) *</label>
-                                        <input type="file" class="form-control" id="appCV" accept=".pdf,.doc,.docx" required>
-                                        <div class="form-text">Định dạng: PDF, DOC, DOCX. Tối đa 5MB.</div>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="appMessage" class="form-label">Lời nhắn (nếu có)</label>
-                                        <textarea class="form-control" id="appMessage" rows="3"></textarea>
-                                    </div>
-                                    
-                                    <div class="mb-3 form-check">
-                                        <input type="checkbox" class="form-check-input" id="appAgree" required>
-                                        <label class="form-check-label" for="appAgree">
-                                            Tôi đồng ý với <a href="#" class="text-danger">chính sách bảo mật</a> và cho phép EXPRESS xử lý thông tin cá nhân của tôi cho mục đích tuyển dụng.
-                                        </label>
-                                    </div>
-                                    
-                                    <button type="submit" class="btn btn-danger w-100 py-2">
-                                        <i class="fas fa-paper-plane me-2"></i>Gửi hồ sơ ứng tuyển
-                                    </button>
-                                </form>
+                               <form action="https://formspree.io/f/mregkyev" method="POST" enctype="multipart/form-data" id="applicationForm">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="appName" class="form-label">Họ và tên *</label>
+            <input type="text" class="form-control" id="appName" name="ho_ten" required>
+        </div>
+        <div class="col-md-6">
+            <label for="appPhone" class="form-label">Số điện thoại *</label>
+            <input type="tel" class="form-control" id="appPhone" name="so_dien_thoai" required>
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="appEmail" class="form-label">Email *</label>
+        <input type="email" class="form-control" id="appEmail" name="email" required>
+    </div>
+    
+    <div class="mb-3">
+        <label for="appPosition" class="form-label">Vị trí ứng tuyển *</label>
+        <select class="form-select" id="appPosition" name="vi_tri" required>
+            <option value="" selected disabled>Chọn vị trí</option>
+            <option value="Senior Frontend Developer">Senior Frontend Developer</option>
+            <option value="Quản Lý Vận Chuyển">Quản Lý Vận Chuyển</option>
+            <option value="Chuyên Viên Kinh Doanh">Chuyên Viên Kinh Doanh</option>
+            <option value="Nhân Viên Hỗ Trợ Khách Hàng">Nhân Viên Hỗ Trợ Khách Hàng</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Thực Tập Sinh Marketing">Thực Tập Sinh Marketing</option>
+            <option value="Khác">Khác (Ghi rõ trong CV)</option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label for="appExperience" class="form-label">Kinh nghiệm làm việc (năm) *</label>
+        <input type="number" class="form-control" id="appExperience" name="kinh_nghiem" min="0" max="50" required>
+    </div>
+    
+    <div class="mb-3">
+        <label for="appCV" class="form-label">Tải lên CV (PDF/DOC, max 5MB) *</label>
+        <input type="file" class="form-control" id="appCV" name="cv_upload" accept=".pdf,.doc,.docx" required>
+        <div class="form-text">Định dạng: PDF, DOC, DOCX.</div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="appMessage" class="form-label">Lời nhắn (nếu có)</label>
+        <textarea class="form-control" id="appMessage" name="loi_nhan" rows="3"></textarea>
+    </div>
+    
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="appAgree" required>
+        <label class="form-check-label" for="appAgree">
+            Tôi đồng ý với <a href="#" class="text-white fw-bold">chính sách bảo mật</a>
+        </label>
+    </div>
+
+    <input type="hidden" name="_subject" value="Hồ sơ ứng tuyển mới từ Website">
+    <input type="hidden" name="_next" value="https://tuanvuht.github.io/vutekexpress/tuyen-dung.html">
+    
+    <button type="submit" class="btn btn-light text-danger fw-bold w-100 py-2">
+        <i class="fas fa-paper-plane me-2"></i>Gửi hồ sơ ứng tuyển
+    </button>
+</form>
                             </div>
                         </div>
                     </div>
@@ -1006,48 +1009,7 @@
         });
         
         // Application Form Submission
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validate file size
-            const fileInput = document.getElementById('appCV');
-            if (fileInput.files.length > 0) {
-                const fileSize = fileInput.files[0].size / 1024 / 1024; // in MB
-                if (fileSize > 5) {
-                    EXPRESS.showToast('Lỗi', 'Kích thước file vượt quá 5MB. Vui lòng chọn file nhỏ hơn.', 'error');
-                    return;
-                }
-            }
-            
-            // Show loading
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> Đang gửi hồ sơ...';
-            btn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // Show success message
-                EXPRESS.showToast(
-                    'Thành công!', 
-                    'Hồ sơ ứng tuyển của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại trong 3-5 ngày làm việc.', 
-                    'success'
-                );
-                
-                // Reset form
-                this.reset();
-                
-                // Reset button
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                
-                // Scroll to top
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 2000);
-        });
+        
         
         // Add click effect to job cards
         document.querySelectorAll('.job-card').forEach(card => {
