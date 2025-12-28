@@ -1,1 +1,864 @@
 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về Chúng Tôi - EXPRESS Chuyển Phát Nhanh</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #dc3545, #ff6b6b);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #dc3545;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #dc3545;
+        }
+        
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dc3545, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .milestone-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #dc3545;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-unit {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .member-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #dc3545;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .stat-card {
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .partner-logo {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .vision-card {
+            border-left: 4px solid #dc3545;
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+        
+        .award-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #dc3545, #ff6b6b);
+            color: white;
+            border-radius: 20px;
+            font-weight: 500;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header class="header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold text-danger fs-3" href="index.html">
+                    <i class="fas fa-shipping-fast me-2"></i>EXPRESS
+                </a>
+                
+                <!-- Hotline -->
+                <a class="btn btn-outline-danger d-lg-none ms-auto me-3" href="tel:19086980">
+                    <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                </a>
+                
+                <!-- Navbar Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Navbar Menu -->
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tim-buu-cuc.html">Tìm bưu cục</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ho-tro.html">Hỗ trợ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dich-vu.html">Dịch vụ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tim-24.7.html">Tin 24/7</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tuwendung.html">Tuyển dụng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="vechungtoi.html">Về chúng tôi</a>
+                        </li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <a class="btn btn-danger px-4" href="tel:19086980">
+                                <i class="fas fa-phone-alt me-1"></i> 1900 6980
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content pt-5 mt-5">
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-light">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-5 fw-bold text-danger mb-4">Chúng Tôi Là EXPRESS</h1>
+                        <p class="lead mb-4">Tiên phong trong lĩnh vực chuyển phát nhanh với hơn 10 năm kinh nghiệm, chúng tôi cam kết mang đến dịch vụ tốt nhất cho khách hàng.</p>
+                        <div class="d-flex gap-3">
+                            <a href="#lien-he" class="btn btn-danger btn-lg px-4">
+                                <i class="fas fa-handshake me-2"></i>Liên hệ hợp tác
+                            </a>
+                            <a href="#gia-tri" class="btn btn-outline-danger btn-lg px-4">
+                                <i class="fas fa-star me-2"></i>Giá trị cốt lõi
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <img src="https://cdn.pixabay.com/photo/2018/02/13/09/47/teamwork-3150790_1280.jpg" 
+                             alt="Về chúng tôi" class="img-fluid rounded shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h2 class="h1 fw-bold text-danger mb-4">Câu Chuyện Của Chúng Tôi</h2>
+                        <p class="lead mb-4">Từ một startup nhỏ vào năm 2014, EXPRESS đã phát triển thành một trong những công ty chuyển phát hàng đầu Việt Nam.</p>
+                        <p class="mb-4">Với sứ mệnh kết nối mọi người thông qua dịch vụ chuyển phát nhanh chóng, an toàn và tin cậy, chúng tôi không ngừng đổi mới và cải thiện chất lượng dịch vụ.</p>
+                        <p class="mb-0">Đội ngũ của chúng tôi gồm hơn 2,000 nhân viên tận tâm, làm việc tại hơn 100 bưu cục trên khắp cả nước, luôn sẵn sàng phục vụ khách hàng 24/7.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-0 shadow-lg">
+                            <img src="https://cdn.pixabay.com/photo/2016/11/29/12/30/analytics-1869263_1280.jpg" 
+                                 alt="Văn phòng EXPRESS" class="card-img-top rounded-top">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold">EXPRESS Hôm Nay</h5>
+                                <p class="card-text">Một tập thể đoàn kết, sáng tạo và không ngừng phấn đấu vì sự hài lòng của khách hàng.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Milestones -->
+        <section class="milestones-section py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Thành Tựu Nổi Bật</h2>
+                    <p class="lead text-muted">Hành trình 10 năm phát triển và những con số ấn tượng</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="milestone-number">10+</div>
+                            <div class="milestone-unit">Năm kinh nghiệm</div>
+                            <p class="text-muted mt-2">Thành lập từ 2014</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="milestone-number">1,000+</div>
+                            <div class="milestone-unit">Bưu cục</div>
+                            <p class="text-muted mt-2">Trên toàn quốc</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="milestone-number">2,000+</div>
+                            <div class="milestone-unit">Nhân viên</div>
+                            <p class="text-muted mt-2">Chuyên nghiệp, tận tâm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="milestone-number">5M+</div>
+                            <div class="milestone-unit">Khách hàng</div>
+                            <p class="text-muted mt-2">Tin tưởng và đồng hành</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-section py-5">
+            <div class="container">
+                <h2 class="h1 fw-bold text-center text-danger mb-5">Hành Trình Phát Triển</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014</div>
+                        <h4 class="fw-bold mb-3">Thành Lập EXPRESS</h4>
+                        <p class="text-muted">EXPRESS chính thức được thành lập với 10 nhân viên và 1 bưu cục đầu tiên tại TP.HCM.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <h4 class="fw-bold mb-3">Mở Rộng Ra Miền Bắc</h4>
+                        <p class="text-muted">Khai trương bưu cục đầu tiên tại Hà Nội, đánh dấu bước phát triển quan trọng ra thị trường miền Bắc.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <h4 class="fw-bold mb-3">Ra Mắt Dịch Vụ Quốc Tế</h4>
+                        <p class="text-muted">Chính thức cung cấp dịch vụ chuyển phát quốc tế đến hơn 50 quốc gia và vùng lãnh thổ.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <h4 class="fw-bold mb-3">Đạt 500 Bưu Cục</h4>
+                        <p class="text-muted">Mốc son quan trọng với 500 bưu cục trên toàn quốc, phục vụ hơn 1 triệu khách hàng.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <h4 class="fw-bold mb-3">Ứng Dụng Di Động & AI</h4>
+                        <p class="text-muted">Ra mắt ứng dụng di động và tích hợp AI vào quy trình vận chuyển, tối ưu hóa trải nghiệm khách hàng.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <h4 class="fw-bold mb-3">Tiếp Tục Đổi Mới</h4>
+                        <p class="text-muted">Vượt mốc 1,000 bưu cục, mở rộng dịch vụ logistics và hướng tới phát triển bền vững.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section id="gia-tri" class="values-section py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Giá Trị Cốt Lõi</h2>
+                    <p class="lead text-muted">Những nguyên tắc định hướng mọi hoạt động của chúng tôi</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card bg-white shadow-sm">
+                            <div class="value-icon">
+                                <i class="fas fa-bullseye text-white fa-2x"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Tập Trung Khách Hàng</h4>
+                            <p class="text-muted">Khách hàng là trung tâm của mọi quyết định. Chúng tôi luôn lắng nghe và cải tiến để đáp ứng tốt nhất nhu cầu của khách hàng.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card bg-white shadow-sm">
+                            <div class="value-icon">
+                                <i class="fas fa-shield-alt text-white fa-2x"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Đáng Tin Cậy</h4>
+                            <p class="text-muted">Cam kết giao hàng đúng hẹn, an toàn và bảo mật. Mọi giao dịch đều minh bạch và có thể theo dõi 24/7.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card bg-white shadow-sm">
+                            <div class="value-icon">
+                                <i class="fas fa-rocket text-white fa-2x"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Đổi Mới</h4>
+                            <p class="text-muted">Không ngừng cải tiến công nghệ và quy trình để mang đến dịch vụ tốt nhất, nhanh nhất cho khách hàng.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="value-card bg-white shadow-sm">
+                            <div class="value-icon">
+                                <i class="fas fa-handshake text-white fa-2x"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Trách Nhiệm</h4>
+                            <p class="text-muted">Chịu trách nhiệm với khách hàng, đối tác, nhân viên và cộng đồng. Hoạt động minh bạch và có đạo đức.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission -->
+        <section class="vision-section py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="vision-card">
+                            <h3 class="h2 fw-bold text-danger mb-4">Tầm Nhìn</h3>
+                            <p class="lead mb-4">Trở thành công ty chuyển phát hàng đầu Đông Nam Á, tiên phong trong ứng dụng công nghệ số vào logistics.</p>
+                            <p class="text-muted">Đến năm 2030, EXPRESS sẽ mở rộng hoạt động ra 10 quốc gia trong khu vực và trở thành biểu tượng của sự đáng tin cậy và hiệu quả trong ngành logistics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="vision-card">
+                            <h3 class="h2 fw-bold text-danger mb-4">Sứ Mệnh</h3>
+                            <p class="lead mb-4">Kết nối mọi người và doanh nghiệp thông qua dịch vụ chuyển phát nhanh chóng, an toàn và tiện lợi.</p>
+                            <p class="text-muted">Cung cấp giải pháp logistics toàn diện, hỗ trợ doanh nghiệp phát triển và mang đến trải nghiệm dịch vụ xuất sắc cho từng khách hàng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Team -->
+        <section class="team-section py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Đội Ngũ Lãnh Đạo</h2>
+                    <p class="lead text-muted">Những người dẫn dắt EXPRESS trên hành trình phát triển</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="team-member bg-white shadow-sm">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" 
+                                 alt="CEO" class="member-img">
+                            <h5 class="fw-bold mb-2">Nguyễn Văn An</h5>
+                            <div class="position-tag mb-3">Tổng Giám Đốc</div>
+                            <p class="text-muted small mb-3">15 năm kinh nghiệm trong ngành logistics và quản lý doanh nghiệp. Tốt nghiệp MBA từ Harvard Business School.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="team-member bg-white shadow-sm">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" 
+                                 alt="CTO" class="member-img">
+                            <h5 class="fw-bold mb-2">Trần Thị Bích</h5>
+                            <div class="position-tag mb-3">Giám Đốc Công Nghệ</div>
+                            <p class="text-muted small mb-3">Chuyên gia công nghệ với 12 năm kinh nghiệm. Cựu kỹ sư phần mềm tại Google và Amazon.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="team-member bg-white shadow-sm">
+                            <img src="https://randomuser.me/api/portraits/men/55.jpg" 
+                                 alt="COO" class="member-img">
+                            <h5 class="fw-bold mb-2">Lê Minh Cường</h5>
+                            <div class="position-tag mb-3">Giám Đốc Vận Hành</div>
+                            <p class="text-muted small mb-3">10 năm kinh nghiệm vận hành chuỗi cung ứng. Chuyên gia tối ưu hóa quy trình logistics.</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners & Awards -->
+        <section class="partners-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="h1 fw-bold text-danger mb-3">Đối Tác & Giải Thưởng</h2>
+                    <p class="lead text-muted">Những đối tác tin cậy và sự ghi nhận cho nỗ lực của chúng tôi</p>
+                </div>
+                
+                <div class="mb-5">
+                    <h4 class="fw-bold text-center mb-4">Đối Tác Chiến Lược</h4>
+                    <div class="row g-4">
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="partner-logo">
+                                <img src="https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png" alt="Microsoft">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="partner-logo">
+                                <img src="https://cdn.pixabay.com/photo/2015/11/27/10/55/facebook-1065472_1280.png" alt="Facebook">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="partner-logo">
+                                <img src="https://cdn.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png" alt="PayPal">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="partner-logo">
+                                <img src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_1280.png" alt="AWS">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="partner-logo">
+                                <img src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_1280.png" alt="Google">
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="partner-logo">
+                                <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.png" alt="Intel">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="fw-bold text-center mb-4">Giải Thưởng & Chứng Nhận</h4>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <span class="award-badge">Top 10 Doanh Nghiệp Logistics 2023</span>
+                        <span class="award-badge">Giải Vàng Chất Lượng Quốc Gia</span>
+                        <span class="award-badge">Doanh Nghiệp Sáng Tạo 2022</span>
+                        <span class="award-badge">ISO 9001:2015 Certified</span>
+                        <span class="award-badge">Giải Thưởng Khách Hàng Hài Lòng</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="lien-he" class="contact-section py-5 bg-danger text-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h2 class="h1 fw-bold mb-4">Liên Hệ Với Chúng Tôi</h2>
+                        <p class="lead mb-4">Luôn sẵn sàng lắng nghe và hợp tác cùng bạn phát triển.</p>
+                        
+                        <div class="mb-4">
+                            <h5 class="fw-bold mb-3">Thông Tin Liên Hệ</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <i class="fas fa-map-marker-alt me-3"></i>
+                                    <strong>Trụ sở chính:</strong><br>
+                                    123 Nguyễn Văn Linh, Quận 7, TP.HCM
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-phone me-3"></i>
+                                    <strong>Hotline:</strong> 1900 6980
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-envelope me-3"></i>
+                                    <strong>Email:</strong> info@express.vn
+                                </li>
+                                <li>
+                                    <i class="fas fa-clock me-3"></i>
+                                    <strong>Giờ làm việc:</strong> 24/7
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card shadow border-0">
+                            <div class="card-body p-4">
+                                <h4 class="fw-bold text-dark mb-4">Gửi Thông Điệp</h4>
+                                
+                                <form id="contactMessageForm">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="contactName" class="form-label">Họ và tên *</label>
+                                            <input type="text" class="form-control" id="contactName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contactCompany" class="form-label">Công ty</label>
+                                            <input type="text" class="form-control" id="contactCompany">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="contactPhone" class="form-label">Số điện thoại *</label>
+                                            <input type="tel" class="form-control" id="contactPhone" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contactEmail" class="form-label">Email *</label>
+                                            <input type="email" class="form-control" id="contactEmail" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="contactSubject" class="form-label">Chủ đề *</label>
+                                        <select class="form-select" id="contactSubject" required>
+                                            <option value="" selected disabled>Chọn chủ đề</option>
+                                            <option>Hợp tác kinh doanh</option>
+                                            <option>Truyền thông & Báo chí</option>
+                                            <option>Góp ý & Khiếu nại</option>
+                                            <option>Tuyển dụng</option>
+                                            <option>Khác</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="contactMessage" class="form-label">Nội dung *</label>
+                                        <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-danger w-100 py-2">
+                                        <i class="fas fa-paper-plane me-2"></i>Gửi thông điệp
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer bg-dark text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-lg-4 mb-4">
+                    <h4 class="fw-bold mb-3">
+                        <i class="fas fa-shipping-fast me-2"></i>EXPRESS
+                    </h4>
+                    <p class="mb-3">Dịch vụ chuyển phát nhanh hàng đầu Việt Nam, cam kết mang đến trải nghiệm tốt nhất cho khách hàng.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Liên Kết Nhanh</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Trang chủ</a></li>
+                        <li class="mb-2"><a href="tim-buu-cuc.html" class="text-white-50 text-decoration-none">Tìm bưu cục</a></li>
+                        <li class="mb-2"><a href="dich-vu.html" class="text-white-50 text-decoration-none">Dịch vụ</a></li>
+                        <li class="mb-2"><a href="tuwendung.html" class="text-white-50 text-decoration-none">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">Hỗ Trợ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Câu hỏi thường gặp</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Hướng dẫn sử dụng</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Chính sách bảo mật</a></li>
+                        <li class="mb-2"><a href="ho-tro.html" class="text-white-50 text-decoration-none">Điều khoản dịch vụ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="col-lg-3 mb-4">
+                    <h5 class="fw-bold mb-3">Liên Hệ</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            123 Nguyễn Văn Linh, Quận 7, TP.HCM
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone me-2"></i>
+                            1900 6980
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i>
+                            hotro@express.vn
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock me-2"></i>
+                            8:00 - 20:00 (Thứ 2 - Chủ nhật)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="bg-secondary">
+            
+            <div class="row pt-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2014-2024 EXPRESS. Tất cả các quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Được phát triển bởi <a href="vechungtoi.html" class="text-danger text-decoration-none">EXPRESS Team</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
+    <script>
+        // Contact Form Submission
+        document.getElementById('contactMessageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="loading"></span> Đang gửi...';
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                EXPRESS.showToast(
+                    'Thành công!', 
+                    'Cảm ơn bạn đã liên hệ với EXPRESS. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.', 
+                    'success'
+                );
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        });
+        
+        // Animate milestone numbers
+        function animateMilestoneNumbers() {
+            const milestoneNumbers = document.querySelectorAll('.milestone-number');
+            
+            milestoneNumbers.forEach(number => {
+                const target = parseInt(number.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        number.textContent = target.toLocaleString() + '+';
+                        clearInterval(timer);
+                    } else {
+                        number.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 50);
+            });
+        }
+        
+        // Start animation when timeline section is in view
+        const timelineObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateMilestoneNumbers();
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        timelineObserver.observe(document.querySelector('.milestones-section'));
+        
+        // Add hover effect to team members
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('mouseenter', function() {
+                const img = this.querySelector('.member-img');
+                img.style.transform = 'scale(1.05)';
+                img.style.transition = 'transform 0.3s ease';
+            });
+            
+            member.addEventListener('mouseleave', function() {
+                const img = this.querySelector('.member-img');
+                img.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Timeline animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            
+            setTimeout(() => {
+                item.style.transition = 'all 0.6s ease';
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, index * 200);
+        });
+        
+        // Partner logos animation
+        const partnerLogos = document.querySelectorAll('.partner-logo');
+        partnerLogos.forEach((logo, index) => {
+            logo.style.opacity = '0';
+            logo.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                logo.style.transition = 'all 0.5s ease';
+                logo.style.opacity = '1';
+                logo.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    </script>
+</body>
+</html>
